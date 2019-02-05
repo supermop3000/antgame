@@ -13,14 +13,76 @@
 
 int main()
 {
-    int size_x = 20; //TODO update for user input
-    int size_y = 20; //TODO update for user input
+    string playGameString;
+    string timeStepsString;
+    string settingsString;
+    int timeSteps;
+    string rowsString;
+    string colsString;
+    int size_x = 20;
+    int size_y = 20;
+    int numAnts = 100;
+    int numDoodBugs = 5;
+
+    cout << "\n\n" << "* - * - * PREDATOR PREY GAME * - * - *" << "\n";
+    cout << "- - enter the number for your selection - -" << "\n\n";
+    cout << "- - please note we did the extra credit - -" << "\n\n";
+    cout << "1. Play Game" << "\n";
+    cout << "2. Quit" << "\n\n";
+
+    validSelection(playGameString);
+
+    if(playGameString == "1")
+    {
+      cout << "Enter an integer greater than 1 for the number of steps." << "\n\n";
+      validInt(timeStepsString);
+      stringstream convertSteps(timeStepsString);
+      convertSteps >> timeSteps;
+
+      cout << "- - Would you like custom settings or default settings? - -" << "\n\n";
+      cout << "1. Default Settings" << "\n";
+      cout << "2. Custom Settings" << "\n\n";
+      validSelection(settingsString);
+
+      if(settingsString == "1")
+      {
+        //start game with defaults
+      }
+
+      if(settingsString == "2")
+      {
+        cout << "\n";
+        cout << "Enter an integer greater than 1 for the number of rows" << "\n\n";
+        validInt(rowsString);
+        stringstream convertRows(rowsString);
+        convertRows >> numRows;
+
+        cout << "Enter an integer greater than 1 for the number of columns" << "\n\n";
+        validInt(cols);
+        stringstream convertCols(colsString);
+        convertCols >> numCols;
+
+        cout << "Enter an integer greater than 1 for the number of ants" << "\n\n";
+        validInt(antsString);
+        stringstream convertRows(antsString);
+        convertRows >> numAnts;
+
+        cout << "Enter an integer greater than 1 for the number of doodlebugs" << "\n\n";
+        validInt(cols);
+        stringstream convertCols(colsString);
+        convertCols >> numDoodBugs;
+      }
+    }
+    else if(playGame == "2")
+    {
+      return 0;
+    }
 
     Critter ***board = new Critter**[size_y];
         for(int i = 0; i < size_y; i++)
          {
             board[i] = new Critter*[size_x];
-            
+
             for(int j = 0; j < size_x; j++)
             {
                board[i][j] = new Critter();
@@ -28,7 +90,7 @@ int main()
         }
     Doodlebug *doodle = new Doodlebug(10, 10);
 
-    //add as print board function in utilities folder print_board(Critter ***, rows, col) 
+    //add as print board function in utilities folder print_board(Critter ***, rows, col)
     for(int i = 0; i < size_y; i++)
     {
         for(int k = 0; k < size_x; k++)
