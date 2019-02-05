@@ -55,12 +55,12 @@ int main()
         cout << "Enter an integer greater than 1 for the number of rows" << "\n\n";
         validInt(rowsString);
         stringstream convertRows(rowsString);
-        convertRows >> numRows;
+        convertRows >> size_x;
 
         cout << "Enter an integer greater than 1 for the number of columns" << "\n\n";
         validInt(cols);
         stringstream convertCols(colsString);
-        convertCols >> numCols;
+        convertCols >> size_y;
 
         cout << "Enter an integer greater than 1 for the number of ants" << "\n\n";
         validInt(antsString);
