@@ -5,7 +5,7 @@
  **              predators and "Ant" prey.
  ******************************************************************************/
 
-// #include "Critter.hpp"
+#include "Critter.hpp"
 // #include "Game.hpp"
 
 #include <iostream>
@@ -13,11 +13,33 @@
 
 int main()
 {
-    // size_x = 20;
-    // size_y = 20;
-    // Critter ***board;
-    // dynamically allocate board
-    
+    int size_x = 20; //TODO update for user input
+    int size_y = 20; //TODO update for user input
+
+    Critter ***board = new Critter**[size_y];
+        for(int i = 0; i < size_y; i++)
+         {
+            board[i] = new Critter*[size_x];
+            
+            for(int j = 0; j < size_x; j++)
+            {
+               board[i][j] = new Critter();
+            }
+        }
+    Doodlebug *doodle = new Doodlebug(10, 10);
+
+    //add as print board function in utilities folder print_board(Critter ***, rows, col) 
+    for(int i = 0; i < size_y; i++)
+    {
+        for(int k = 0; k < size_x; k++)
+        {
+            std::cout << board[i][k]->getSymbol();
+        }
+        std::cout << std::endl;
+    }
+    //doodle->move(board);
+    doodle->breed(board);
+    // get steps
     // get steps
     // place critters
     // display initial board
@@ -34,6 +56,17 @@ int main()
         // breedCritters function called on doodle
         // breedCritters called on ant
         // starve function
-    
-    return 0;
+   for(int i = 0; i <  size_y; i++)
+   {
+      for(int j = 0; j < size_x; j++)
+      {
+         delete board[i][j];
+      }
+      delete[] board[i];
+   }
+   delete[] board;
+   board = NULL;
+   delete doodle;
+   doodle = NULL;
+   return 0;
 }
