@@ -32,9 +32,9 @@ char Critter::getSymbol()
     return this->symbol;
 }
 
-void Critter::print_board(Critter ***, int rows, int cols)
+void Critter::print_board(Critter *** board, int rows, int cols)
 {
-   for(int 1 = 0; i < rows; i++)
+   for(int i = 0; i < rows; i++)
    {
       for(int k = 0; k < cols; k++)
       {

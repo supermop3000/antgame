@@ -22,33 +22,33 @@ class Critter
         virtual ~Critter(){};
         virtual bool move(Critter ***);
         virtual void breed(Critter ***){};
-    
+
         char getSymbol();
         int getX_pos();
         void setX_pos(int);
         int getY_pos();
         void setY_pos(int);
-        void print_board(Critter ***);
+        void print_board(Critter *** board, int rows, int cols);
 };
 
 /*class Ant : public Critter
 {
-	
+
 };*/
 
 class Doodlebug : public Critter
 {
     private:
-	int hunger;
-    
+	      int hunger;
+
     public:
         Doodlebug(int, int);
         ~Doodlebug(){};
         bool move(Critter ***);
         void breed(Critter *** &);
-    
-	
-	
+
+
+
 };
 
 #endif
