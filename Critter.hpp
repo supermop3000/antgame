@@ -8,6 +8,7 @@
 #ifndef CRITTER_HPP
 #define CRITTER_HPP
 
+
 class Critter
 {
     protected:
@@ -17,26 +18,37 @@ class Critter
         char symbol;
 
     public:
-        Critter(int, int);
-        ~Critter();
+        Critter();
+        virtual ~Critter(){};
         virtual bool move(Critter ***);
-        virtual void breed(Critter ***);
+        virtual void breed(Critter ***){};
     
-        void getSymbol();
+        char getSymbol();
         int getX_pos();
         void setX_pos(int);
         int getY_pos();
         void setY_pos(int);
+        void print_board(Critter ***);
 };
 
-class Ant : public Critter
+/*class Ant : public Critter
 {
-
-};
+	
+};*/
 
 class Doodlebug : public Critter
 {
-
+    private:
+	int hunger;
+    
+    public:
+        Doodlebug(int, int);
+        ~Doodlebug(){};
+        bool move(Critter ***);
+        void breed(Critter *** &);
+    
+	
+	
 };
 
 #endif
