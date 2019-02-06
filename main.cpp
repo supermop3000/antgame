@@ -6,6 +6,7 @@
  ******************************************************************************/
 
 #include "Critter.hpp"
+#include "Doodlebug.hpp"
 // #include "Game.hpp"
 
 #include <iostream>
@@ -80,7 +81,11 @@ int main()
         }
     Doodlebug *doodle = new Doodlebug(10, 10);
 
-    //add as print board function in utilities folder print_board(Critter ***, rows, col)
+
+    //add as print board function in utilities folder print_board(Critter ***, rows, col) 
+        
+    //doodle->move(board);
+    doodle->breed(board);
     for(int i = 0; i < size_y; i++)
     {
         for(int k = 0; k < size_x; k++)
@@ -90,7 +95,6 @@ int main()
         std::cout << std::endl;
     }
     //doodle->move(board);
-    doodle->breed(board);
     // get steps
     // get steps
     // place critters

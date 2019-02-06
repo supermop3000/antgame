@@ -2,6 +2,7 @@
 ** Program name:Group Project - Predator-Prey Game
 ** Author:	Group 4
 **		Herbert Diaz  <diazh@oregonstate.edu>
+**      Janet Anderson <andejane@oregonstate.edu>
 **		INSERT NAME IF YOU HAVE CONTRIBUTED TO THIS FILE
 ** Date:	2019/02/04
 ** Description: THIS IS THE IMPLEMENTATION FILE OF THE ANT CLASS
@@ -34,49 +35,68 @@ Ant::Ant() : Critter()
 **              TODO:DESCRIBE ARGUMENTS	 **************************
 **		This function also 
 **************************************************************************************************/
-void Ant::move()
+void Ant::move(Critter ***boardIn, int rows, int cols)
 {
-	// If the Ant Can Move
-//TODO	if( antCanMove == true)
-	{
-		bool hasMoved == false;
-		int roll;
-		while (hasMoved == false)
+    int direction = randIntRange(0,3);
+
+    if (direction = 0) //move North (up)
+    {
+        //check that board[x_pos -1][y] is not out of bounds and has symbol = ' '
+        if (this->x_pos -1 > 0)
+        {
+            if (boardIn[this->x_pos -1][this->y_pos]->getSymbol() == ' ')
+            {
+                //Copy Ant to New Location
+                //Delete Ant in Old Location
+
+            }
+        }
+
+        //else the ant stays in its current cell
+    }
+    else if (direction = 1) //move South (down)
+    {
+        //check that board[x_pos + 1][y] is not out of bounds and has symbol = ' ' (check that x_pos+1 > rows -1)
+		if (this->x_pos + 1 <rows)
 		{
-			// randomly choose a number between 0 and 3
-			roll = rand() % 4
+        	if (boardIn[this->x_pos + 1][this->y_pos]->getSymbol() == ' ')
+        	{
+            	//Copy Ant to New Location
+            	//Delete Ant in Old Location
+			}
+        }
 
-			if(roll == 0)
+		//else the ant stays in its current cell
+    }
+    else if (direction = 2) //move East (right)
+    {
+        //check that position[x_pos][y_pos + 1] is not out of bounds and has symbol = ' '
+        if (this->y_pos + 1 < cols)
+        {
+            if (boardIn[this->x_pos][this->y_pos + 1]->getSymbol() == ' ')
 			{
-				// TODO:Copy Ant to New Location
-				// TODO:Delete Ant in Old Location
-				// Set hasMoved to true
-				hasMoved == True
+				//Copy Ant to New Location
+            	// Ant in Old Location
 			}
-			else if (roll == 1)
-			{
-				// TODO:Copy Ant to New Location
-				// TODO:Delete Ant in Old Location
-				// Set hasMoved to true
-				hasMoved == True
-			}
-			else if (roll == 2)
-			{
-				// TODO:Copy Ant to New Location
-				// TODO:Delete Ant in Old Location
-				// Set hasMoved to true
-				hasMoved == True
-			}
-			else
-			{
-				// TODO:Copy Ant to New Location
-				// TODO:Delete Ant in Old Location
-				// Set hasMoved to true
-				hasMoved == True
-			}
+        }
+		
+		//else the ant stays in its current cell
+    }
+    else //move West (left)
+    {
+        //check that position[x_pos][y_pos -1] is not out of bounds and has null pointer or symbol ' '
+        if (this->y_pos -1 > 0)
+        {
+            if (boardIn[this->x_pos][this->y_pos-1]->getSymbol() == ' ')
+            {
+                //Copy Ant to New Location
+                //Delete Ant in Old Location
 
-		}
-	}
-	//Increase Ant's Age
-	
+            }
+        }
+
+		//else ant stays in its current cell
+    }
+
+    this->age++;	
 }

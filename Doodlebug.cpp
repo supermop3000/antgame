@@ -1,6 +1,6 @@
 
 
-#include "Critter.hpp"
+#include "Doodlebug.hpp"
 
 #include <iostream>
 
@@ -19,20 +19,56 @@ Doodlebug::Doodlebug(int x_pos, int y_pos):Critter()
 
 bool Doodlebug::move(Critter ***boardIn)
 {
+   
    cout << "in doodlemove" << endl;
    return true;
 }
 
 void Doodlebug::breed(Critter *** &boardIn)
 {
+   bool cellFree = false;
+   int new_x, new_y;
    //check that adjacent cell is free, i.e. printSymbol() of the object of that cell returns ' '
-   if(boardIn[this->x_pos + 1][this->y_pos]->getSymbol() == ' ')
+   while(cellFree == false)
    {
-      delete boardIn[this->x_pos + 1][this->y_pos];
-      Doodlebug *doodle = new Doodlebug(this->x_pos + 1, this->y_pos);
-      boardIn[this->x_pos + 1][this->y_pos] = doodle;
-      cout <<  "new symbol in array " << boardIn[this->x_pos + 1][this->y_pos]->getSymbol() << endl;
-      
-      //delete doodle;
+	   if(boardIn[this->y_pos + 1][this->x_pos]->getSymbol() == ' ')
+	   {
+	      new_y = y_pos + 1;
+	      new_x = x_pos;
+	      cellFree = true;
+              break;
+	   }
+	   if(boardIn[this->y_pos - 1][this->x_pos]->getSymbol() == ' ')
+	   {
+	      new_y = y_pos - 1;
+	      new_x = x_pos;
+	      cellFree = true;
+              break;
+	   }
+	   if(boardIn[this->y_pos][this->x_pos + 1]->getSymbol() == ' ')
+	   {
+	      new_y = y_pos;
+	      new_x = x_pos + 1;
+	      cellFree = true;
+              break;
+	   }
+	   if(boardIn[this->y_pos][this->x_pos - 1]->getSymbol() == ' ')
+	   {
+	      new_y = y_pos;
+	      new_x = x_pos - 1;
+	      cellFree = true;
+              break;
+	   }
+           else
+              break;
    }
+   if(cellFree == true)
+   {
+      cout << new_y << " " << new_x <<endl;
+      delete boardIn[new_y][new_x];
+      Doodlebug *doodle = new Doodlebug(new_y, new_x);
+      boardIn[new_y][new_x] = doodle;
+   }
+   else
+      return;
 }

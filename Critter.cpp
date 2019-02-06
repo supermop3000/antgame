@@ -31,15 +31,3 @@ char Critter::getSymbol()
 {
     return this->symbol;
 }
-
-void Critter::print_board(Critter *** board, int rows, int cols)
-{
-   for(int i = 0; i < rows; i++)
-   {
-      for(int k = 0; k < cols; k++)
-      {
-         std::cout << board[i][k]->getSymbol();
-      }
-      std::cout << std::endl;
-   }
-}

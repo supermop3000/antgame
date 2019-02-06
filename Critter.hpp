@@ -30,25 +30,4 @@ class Critter
         void setY_pos(int);
         void print_board(Critter *** board, int rows, int cols);
 };
-
-/*class Ant : public Critter
-{
-
-};*/
-
-class Doodlebug : public Critter
-{
-    private:
-	      int hunger;
-
-    public:
-        Doodlebug(int, int);
-        ~Doodlebug(){};
-        bool move(Critter ***);
-        void breed(Critter *** &);
-
-
-
-};
-
 #endif
