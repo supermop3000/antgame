@@ -10,13 +10,16 @@
 class Doodlebug : public Critter
 {
     private:
-	int hunger;
-    
+      int hunger;
+
     public:
-        Doodlebug(int, int);
-        ~Doodlebug(){};
-        bool move(Critter ***);
-        void breed(Critter *** &);
+      Doodlebug(int, int);
+      ~Doodlebug(){};
+
+      bool move(Critter ***);
+      void breed(Critter *** &);
+      //helper function for setAge
+      void setAge(int ageIn);
 };
 
 #endif

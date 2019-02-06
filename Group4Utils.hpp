@@ -12,14 +12,13 @@
 
 using std::string;
 
-namespace Group4Utils
-{
-    // random
-    int randIntRange(int, int );
-    //validate user input, selection between 2 choices
-    int validSelection();
-    //validate integer input greater than 0
-    int validInt();
-}
+  // random
+  int randIntRange(int, int );
+  //validate user input, selection between 2 choices
+  int validSelection();
+  //validate integer input greater than 0
+  int validInt();
+  //validate integer input greater than 0 with a max variable
+  int validIntMax(int maxInput);
 
 #endif

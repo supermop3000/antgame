@@ -17,7 +17,7 @@ using std::stringstream;
 /*********************************************************************
 ** Description: gets rand ranged int, seed is static
 *********************************************************************/
-int Group4Utils::randIntRange(int min, int max)
+int randIntRange(int min, int max)
 {
     static std::random_device rd;
     static std::mt19937 mTwist(rd());
@@ -105,9 +105,53 @@ int validInt()
     {
       cout << error << "\n";
     }
+
     else
     {
       return value;
     }
   }
+  return value;
+}
+
+/*********************************************************************
+** Description: validates user input for an interger > 0 and < maxInput
+*********************************************************************/
+int validIntMax(int maxInput)
+{
+  string input = "";
+  bool cont = true;
+  int value = 0;
+  string error = "Invalid input. Please enter an integer greater than 0";
+
+  while (cont)
+  {
+    getline(cin, input);
+    stringstream ss(input);
+    ss >> value;
+
+    //if input is non integer or <=0, error
+    if (value <= 0 || value > maxInput)
+    {
+      cout << error << "\n";
+    }
+
+    //if input empty, error
+    else if (input.empty())
+    {
+      cout << error << "\n";
+    }
+
+    //if input contains decimal, error
+    else if(input.find('.')!=string::npos)
+    {
+      cout << error << "\n";
+    }
+
+    else
+    {
+      return value;
+    }
+  }
+  return value;
 }
