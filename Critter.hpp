@@ -16,6 +16,8 @@ class Critter
         int y_pos;
         int age;
         char symbol;
+        int rows;
+        int columns;
 
     public:
         Critter();
@@ -29,5 +31,8 @@ class Critter
         int getY_pos();
         void setY_pos(int);
         void print_board(Critter *** board, int rows, int cols);
+        void setRows(int);
+        void setColumns(int);
+        bool moveOutOfBounce(int);
 };
 #endif
