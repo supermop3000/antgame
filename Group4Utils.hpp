@@ -10,10 +10,16 @@
 #include <string>
 #include <iostream>
 
+using std::string;
+
 namespace Group4Utils
 {
-    // random 
+    // random
     int randIntRange(int, int );
+    //validate user input, selection between 2 choices
+    int validSelection();
+    //validate integer input greater than 0
+    int validInt();
 }
 
 #endif

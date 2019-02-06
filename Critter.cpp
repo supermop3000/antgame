@@ -31,4 +31,3 @@ char Critter::getSymbol()
 {
     return this->symbol;
 }
-
