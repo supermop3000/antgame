@@ -14,7 +14,7 @@ OBJS = main.o Critter.o Doodlebug.o
 
 SRCS = main.cpp Critter.cpp Doodlebug.cpp
 
-HEADERS = Critter.hpp
+HEADERS = Critter.hpp Doodlebug.hpp
 
 critter: ${OBJS} ${HEADERS}
 	${CXX} ${OBJS} -o critter
