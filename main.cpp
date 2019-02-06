@@ -13,6 +13,8 @@
 
 int main()
 {
+    int playGame;
+    int customSettings;
     int timeSteps;
     int size_x = 20;
     int size_y = 20;
@@ -25,7 +27,9 @@ int main()
     cout << "1. Play Game" << "\n";
     cout << "2. Quit" << "\n\n";
 
-    if(validSelection() == 1)
+    playGame = validSelection();
+
+    if(playGame == 1)
     {
       cout << "Enter an integer greater than 1 for the number of steps" << "\n\n";
       timeSteps = validInt();
@@ -34,12 +38,14 @@ int main()
       cout << "1. Default Settings" << "\n";
       cout << "2. Custom Settings" << "\n\n";
 
-      if(validSelection() == 1)
+      customSettings = validSelection();
+
+      if(customSettings == 1)
       {
         //start game with defaults
       }
 
-      else if(validSelection() == 2)
+      else if(customSettings == 2)
       {
         cout << "\n";
         cout << "Enter an integer greater than 1 for the number of rows" << "\n\n";
@@ -57,7 +63,7 @@ int main()
     }
 
     //quit game
-    else if(validSelection() == 2)
+    else if(playGame == 2)
     {
       return 0;
     }
