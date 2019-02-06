@@ -31,24 +31,4 @@ class Critter
         void print_board(Critter ***);
 };
 
-/*class Ant : public Critter
-{
-	
-};*/
-
-class Doodlebug : public Critter
-{
-    private:
-	int hunger;
-    
-    public:
-        Doodlebug(int, int);
-        ~Doodlebug(){};
-        bool move(Critter ***);
-        void breed(Critter *** &);
-    
-	
-	
-};
-
 #endif
