@@ -19,6 +19,7 @@ Doodlebug::Doodlebug(int x_pos, int y_pos):Critter()
 
 bool Doodlebug::move(Critter ***boardIn)
 {
+   
    cout << "in doodlemove" << endl;
    return true;
 }
@@ -35,7 +36,7 @@ void Doodlebug::breed(Critter *** &boardIn)
 	      new_y = y_pos + 1;
 	      new_x = x_pos;
 	      cellFree = true;
-	      break;      
+              break;
 	   }
 	   if(boardIn[this->y_pos - 1][this->x_pos]->getSymbol() == ' ')
 	   {
@@ -58,9 +59,16 @@ void Doodlebug::breed(Critter *** &boardIn)
 	      cellFree = true;
               break;
 	   }
+           else
+              break;
    }
+   if(cellFree == true)
+   {
       cout << new_y << " " << new_x <<endl;
       delete boardIn[new_y][new_x];
       Doodlebug *doodle = new Doodlebug(new_y, new_x);
       boardIn[new_y][new_x] = doodle;
+   }
+   else
+      return;
 }
