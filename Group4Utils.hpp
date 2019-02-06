@@ -17,9 +17,9 @@ namespace Group4Utils
     // random
     int randIntRange(int, int );
     //validate user input, selection between 2 choices
-    void validSelection(string& input);
+    int validSelection();
     //validate integer input greater than 0
-    void validInt(string& input);
+    int validInt();
 }
 
 #endif

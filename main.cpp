@@ -13,67 +13,51 @@
 
 int main()
 {
-    string playGameString;
-    string timeStepsString;
-    string settingsString;
     int timeSteps;
-    string rowsString;
-    string colsString;
     int size_x = 20;
     int size_y = 20;
     int numAnts = 100;
     int numDoodBugs = 5;
 
     cout << "\n\n" << "* - * - * PREDATOR PREY GAME * - * - *" << "\n";
-    cout << "- - enter the number for your selection - -" << "\n\n";
-    cout << "- - please note we did the extra credit - -" << "\n\n";
+    cout << "- enter the number for your selection -" << "\n\n";
+    cout << "- please note we did the extra credit -" << "\n\n";
     cout << "1. Play Game" << "\n";
     cout << "2. Quit" << "\n\n";
 
-    validSelection(playGameString);
-
-    if(playGameString == "1")
+    if(validSelection() == 1)
     {
-      cout << "Enter an integer greater than 1 for the number of steps." << "\n\n";
-      validInt(timeStepsString);
-      stringstream convertSteps(timeStepsString);
-      convertSteps >> timeSteps;
+      cout << "Enter an integer greater than 1 for the number of steps" << "\n\n";
+      timeSteps = validInt();
 
-      cout << "- - Would you like custom settings or default settings? - -" << "\n\n";
+      cout << "Would you like custom settings or default settings?" << "\n\n";
       cout << "1. Default Settings" << "\n";
       cout << "2. Custom Settings" << "\n\n";
-      validSelection(settingsString);
 
-      if(settingsString == "1")
+      if(validSelection() == 1)
       {
         //start game with defaults
       }
 
-      if(settingsString == "2")
+      else if(validSelection() == 2)
       {
         cout << "\n";
         cout << "Enter an integer greater than 1 for the number of rows" << "\n\n";
-        validInt(rowsString);
-        stringstream convertRows(rowsString);
-        convertRows >> size_x;
+        size_x = validInt();
 
         cout << "Enter an integer greater than 1 for the number of columns" << "\n\n";
-        validInt(cols);
-        stringstream convertCols(colsString);
-        convertCols >> size_y;
+        size_y = validInt();
 
         cout << "Enter an integer greater than 1 for the number of ants" << "\n\n";
-        validInt(antsString);
-        stringstream convertRows(antsString);
-        convertRows >> numAnts;
+        numAnts = validInt();
 
         cout << "Enter an integer greater than 1 for the number of doodlebugs" << "\n\n";
-        validInt(cols);
-        stringstream convertCols(colsString);
-        convertCols >> numDoodBugs;
+        numDoodBugs = validInt();
       }
     }
-    else if(playGame == "2")
+
+    //quit game
+    else if(validSelection() == 2)
     {
       return 0;
     }
