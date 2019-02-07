@@ -11,7 +11,8 @@
 // Ant.cpp
 
 #include "Critter.hpp"
-
+#include "Ant.hpp"
+#include "Group4Utils.hpp"
 
 //!!!COPY AND PASTE THIS BEFORE YOUR FUNCTIONS SO WE CAN KEEP ALL THE INFORMATION TOGETHER!!!!
 /**************************************************************************************************
@@ -24,22 +25,25 @@
 ** Description: Ant()							 **PUBLIC::2019.02.04::HD**
 **              This is the default constructor for the Ant Class	 **************************
 **************************************************************************************************/
-Ant::Ant() : Critter()
+Ant::Ant(int x_pos, int y_pos):Critter()
 {
-	// TODO: WHAT SHOULD BE INITALIZED FOR THE ANT
+   this->x_pos = x_pos;
+   this->y_pos = y_pos;
+   this->age = 0;
+   this->symbol = 'O';
 }
 
 
 /**************************************************************************************************
 ** Description: void move(TODO: PARAMETERS TBA)				 **PUBLIC::2019.02.04::HD**
 **              TODO:DESCRIBE ARGUMENTS	 **************************
-**		This function also 
+**		This function also
 **************************************************************************************************/
 void Ant::move(Critter ***boardIn, int rows, int cols)
 {
     int direction = randIntRange(0,3);
 
-    if (direction = 0) //move North (up)
+    if (direction == 0) //move North (up)
     {
         //check that board[x_pos -1][y] is not out of bounds and has symbol = ' '
         if (this->x_pos -1 > 0)
@@ -54,7 +58,7 @@ void Ant::move(Critter ***boardIn, int rows, int cols)
 
         //else the ant stays in its current cell
     }
-    else if (direction = 1) //move South (down)
+    else if (direction == 1) //move South (down)
     {
         //check that board[x_pos + 1][y] is not out of bounds and has symbol = ' ' (check that x_pos+1 > rows -1)
 		if (this->x_pos + 1 <rows)
@@ -68,7 +72,7 @@ void Ant::move(Critter ***boardIn, int rows, int cols)
 
 		//else the ant stays in its current cell
     }
-    else if (direction = 2) //move East (right)
+    else if (direction == 2) //move East (right)
     {
         //check that position[x_pos][y_pos + 1] is not out of bounds and has symbol = ' '
         if (this->y_pos + 1 < cols)
@@ -79,7 +83,7 @@ void Ant::move(Critter ***boardIn, int rows, int cols)
             	// Ant in Old Location
 			}
         }
-		
+
 		//else the ant stays in its current cell
     }
     else //move West (left)
@@ -98,5 +102,5 @@ void Ant::move(Critter ***boardIn, int rows, int cols)
 		//else ant stays in its current cell
     }
 
-    this->age++;	
+    this->age++;
 }

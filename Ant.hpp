@@ -4,11 +4,12 @@
 ** Date:	2019/02/04
 ** Description: THIS IS THE HEADER FILE OF THE ANT CLASS
 **		ABSTRACTION OF:	The Ants, or Prey, of the Game
-**		PURPOSE:	
-**		HOW TO USE:	
-**		SUMMARY:	
+**		PURPOSE:
+**		HOW TO USE:
+**		SUMMARY:
 **************************************************************************************************/
-// Ant.hpp
+
+
 #ifndef ANT_HPP
 #define ANT_HPP
 
@@ -17,10 +18,12 @@
 class Ant : public Critter
 {
 	private:
+
 	public:
-		Ant()
-		~Ant()
-		virtual void move();	// TODO:DETERMINE NECESSARY PARAMETERS ~HD
-		virtual void breed();	// TODO: DETERMINE NECESSARY PARAMETERS ~HD
+		Ant(int x_pos, int y_pos);
+		~Ant(){};
+		void move(Critter ***boardIn, int rows, int cols);	// TODO:DETERMINE NECESSARY PARAMETERS ~HD
+	 	void breed();	// TODO: DETERMINE NECESSARY PARAMETERS ~HD
 };
+
 #endif
