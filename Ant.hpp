@@ -1,6 +1,8 @@
 /**************************************************************************************************
 ** Program name:Group Project - Predator-Prey Game
-** Author:	Group 4 - Herbert Diaz  <diazh@oregonstate.edu>
+** Author:	Group 4
+**		Herbert Diaz  <diazh@oregonstate.edu>
+**		INSERT NAME IF YOU'VE CONTRIBUTED TO THIS FILE
 ** Date:	2019/02/04
 ** Description: THIS IS THE HEADER FILE OF THE ANT CLASS
 **		ABSTRACTION OF:	The Ants, or Prey, of the Game
@@ -14,6 +16,9 @@
 #define ANT_HPP
 
 #include "Critter.hpp"
+#include <vector>
+
+using std::vector;
 
 class Ant : public Critter
 {
@@ -22,8 +27,8 @@ class Ant : public Critter
 	public:
 		Ant(int x_pos, int y_pos);
 		~Ant(){};
-		void move(Critter ***boardIn, int rows, int cols);	// TODO:DETERMINE NECESSARY PARAMETERS ~HD
-	 	void breed();	// TODO: DETERMINE NECESSARY PARAMETERS ~HD
+		void move(Critter ***boardIn, int rows, int cols);
+	 	void breed(Critter***, int, int);	// TODO: DETERMINE NECESSARY PARAMETERS ~HD
 };
 
 #endif
