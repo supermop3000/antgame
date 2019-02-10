@@ -16,8 +16,8 @@ class Doodlebug : public Critter
       Doodlebug(int, int);
       ~Doodlebug(){};
 
-      bool move(Critter ***);
-      void breed(Critter *** &);
+      void move(Critter *** &);
+      void breed(const Critter *** &);
       //helper function for setAge
       void setAge(int ageIn);
 };
