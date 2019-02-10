@@ -39,11 +39,96 @@ Ant::Ant(int x_pos, int y_pos):Critter()
 **              TODO:DESCRIBE ARGUMENTS	 			   ********************************
 **		This function also
 **************************************************************************************************/
-void Ant::move(Critter ***boardIn, int rows, int cols)
+void Ant::move(Critter *** &boardIn)
 {
-    int direction = randIntRange(0,3);
+      int new_x, new_y;
+      bool cellFree = false;
+      bool inBounds = false;
+      int random = randIntRange(0,3);
+      int attempts = 0;
+      switch (random) 
+      {
+         case 0: new_x = this->x_pos - 1;
+                 new_y = this->y_pos;
+                 inBounds = checkBounds(new_x, new_y);
+                 if(inBounds && boardIn[new_x][new_y] == NULL)
+                 {
+                    cellFree = true;   
+	            break;
+                 }
+                 else if(attempts >= 4)
+                    break;
+                 else
+                 {  
+                    attempts++;
+                    random = 1;
+                 }
+         case 1: new_x = this->x_pos;
+                 new_y = this->y_pos + 1;
+                 inBounds = checkBounds(new_x, new_y);
+                 if(inBounds && boardIn[new_x][new_y] == NULL)
+                 {
+                    cellFree = true;
+      	            break;
+                 }
+                 else if(attempts >= 4)
+                    break;
+                 else
+                 {
+                    attempts++;
+                    random = 2;
+                 }  
+         case 2: new_x = this->x_pos + 1;
+                 new_y = this->y_pos;
+                 inBounds = checkBounds(new_x, new_y);
+                 if(inBounds && boardIn[new_x][new_y] == NULL)
+                 {
+                    cellFree = true;
+	            break;
+                 }
+                 else if(attempts >= 4)
+                    break;
+                 else
+                 {
+                    attempts++;
+                    random = 3;
+                 }
+         case 3: new_x = this->x_pos;
+                 new_y = this->y_pos - 1;
+                 inBounds = checkBounds(new_x, new_y);
+                 if(inBounds && boardIn[new_x][new_y] == NULL)
+                 {
+                    cellFree = true;
+	            break;
+                 }
+                 else if(attempts >= 4)
+                    break;
+                 else
+                 {
+                    attempts++;
+                    random = 0;
+                 }
+      }
 
-    if (direction == 0) //move North (up)
+      if(cellFree == true)
+      {
+         delete  boardIn[new_x][new_y];
+         boardIn[new_x][new_y] = boardIn[this->x_pos][this->y_pos];
+         boardIn[this->x_pos][this->y_pos] = NULL;
+         this->x_pos = new_x;
+         this->y_pos = new_y;
+	 this->moveSuccess = 1;
+      }
+
+      else
+      {
+         this->moveSuccess = 1;
+         return;
+      }
+   
+}
+
+/*    if (direction == 0) //move North (up)
     {
         //check that board[x_pos -1][y] is not out of bounds and has symbol = ' '
         if (this->x_pos -1 > 0)
@@ -102,8 +187,7 @@ void Ant::move(Critter ***boardIn, int rows, int cols)
 		//else ant stays in its current cell
     }
 
-    this->age++;
-}
+    this->age++;*/
 
 
 /**************************************************************************************************
@@ -111,9 +195,9 @@ void Ant::move(Critter ***boardIn, int rows, int cols)
 **              TODO:DESCRIBE ARGUMENTS	 			      *****************************
 **		TODO:DESCRIBE FUNCTION
 **************************************************************************************************/
-void Ant::breed(Critter** boardIn, int rows, int cols)
+void Ant::breed(Critter*** &boardIn)
 {
-	int randomRoll;	// holds the randomly generated integer for choosing a direction
+/*	int randomRoll;	// holds the randomly generated integer for choosing a direction
 	bool cellFree = true;	// checks if any adjacent cells are free
 	vector<int> openSpace;	// holds values that indicate the location of an open space
 
@@ -186,5 +270,5 @@ void Ant::breed(Critter** boardIn, int rows, int cols)
 
 		}
 	}
-		
+*/		
 }
