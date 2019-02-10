@@ -22,6 +22,7 @@ Critter::Critter()
     //this->y_pos = y_pos;
     this->age = 0;
     this->symbol = ' ';
+    this->moveSuccess = 0;
 }
 
 //Set functions
@@ -61,10 +62,9 @@ int Critter::getY_pos()
     return y_pos;
 }
 
-bool Critter::move(Critter ***boardIn)
+void Critter::move(Critter *** &boardIn)
 {
     std::cout << "in critter move" << std::endl;
-    return true;
 }
 
 /******************************************************************************
@@ -75,37 +75,44 @@ bool Critter::move(Critter ***boardIn)
  **              It returns false if the move does not go out of bounds, and
  **              true if the move would result in going out of bounds.
  ******************************************************************************/
-bool Critter::moveOutOfBounce(int direction)
+bool Critter::checkBounds(int new_x, int new_y)
 {
     bool outOfBounce = true;
-    if (direction == 0) //Direction North (move row up 1)
+
+    if(new_x < 0 || new_x > 19) //TODO NEED TO MAKE ROWS AND COLUMNS PART OF CRITTER CONSTRUCTOR TO USE ROWS AND COLUMNS CRITERIA FOR BOUNDS FUNCTION
+      outOfBounce = false;
+
+    if(new_y < 0 || new_y > 19)
+      outOfBounce = false;
+
+ /*   if (direction == 0) //Direction North (move row down 1)
     {
-        if (this->x_pos -1 > 0)
+        if (this->x_pos -1 < 0)
         {
             outOfBounce = false;
         }
     }
-    else if (direction == 1) //Direction South (move row up 1)
+    else if (direction == 1) //Direction East (move col up 1)
     {
-        if (this->x_pos + 1 <rows)
+        if (this->y_pos + 1 > 19)
         {
             outOfBounce =  false;
         }
     }
-    else if (direction == 2) //Direction East (move column up 1)
+    else if (direction == 2) //Direction South (move row up 1)
     {
-        if (this->y_pos + 1 < columns)
+        if (this->x_pos + 1 > 19)
         {
             outOfBounce = false;
         }
     }
     else //Direction = 3, Direction West (move column down 1)
     {
-        if (this->y_pos -1 > 0)
+        if (this->y_pos -1 < 0)
         {
             outOfBounce = false;
         }
-    }
+    }*/
     return outOfBounce;
 }
 
@@ -126,6 +133,15 @@ void Critter::print_board(Critter *** board, int rows, int cols)
   }
 }
 
+void Critter::resetMoveSuccess()
+{
+   this->moveSuccess = 0;
+}
+
+int Critter::getMoveSuccess()
+{
+   return this->moveSuccess;
+}
 /*helper function for breed testing
 void Critter::setAge(int ageIn)
 {

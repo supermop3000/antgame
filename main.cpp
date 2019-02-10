@@ -89,7 +89,7 @@ int main()
     }
 
     //set board spaces to null
-    board = new Critter**[size_y];
+    /*board = new Critter**[size_y];
     for(int i = 0; i < size_y; i++)
     {
       board[i] = new Critter*[size_x];
@@ -97,7 +97,17 @@ int main()
       {
         board[i][j] = NULL;
       }
-    }
+    }*/
+    board = new Critter**[size_y];
+        for(int i = 0; i < size_y; i++)
+         {
+            board[i] = new Critter*[size_x];
+            
+            for(int j = 0; j < size_x; j++)
+            {
+               board[i][j] = NULL;
+            }
+        }
 
     int doodCount = 0;
     int antCount = 0;
@@ -154,9 +164,38 @@ int main()
       cout << "\n";
     }
     cout << "\n";
+    
+    //test moving doodlebug
+    for(int i=0; i<size_y; i++)
+    {
+      for(int j=0; j<size_x; j++)
+      {
+          if(board[i][j] != NULL && board[i][j]->getSymbol() == 'X')
+          {
+            if(board[i][j]->getMoveSuccess() == 0)
+            {
+              cout << "Attempting to move from row " << i;
+              cout << " and col " << j << "\n";
+                 board[i][j]->move(board);
+            }
+          }
+      }
+    }
+    //reset move success for next round, 
+    for(int i=0; i<size_y; i++)
+    {
+      for(int j=0; j<size_x; j++)
+      {
+          if(board[i][j] != NULL)
+            {
+              board[i][j]->resetMoveSuccess();
+            }
+      }
+    }
+
 
     //call breed - this should be a function outside of main that just gets called
-    for(int i=0; i<size_y; i++)
+/*    for(int i=0; i<size_y; i++)
     {
       for(int j=0; j<size_x; j++)
       {
@@ -168,7 +207,7 @@ int main()
             }
       }
     }
-
+*/
     cout << "\n" << "Printing board again" << "\n\n";
 
     //print board again to see if breed worked

@@ -20,12 +20,13 @@ class Critter
         char symbol;
         int rows;
         int columns;
+        int moveSuccess;
 
     public:
         Critter();
         virtual ~Critter(){};
-        virtual bool move(Critter ***);
-        virtual void breed(Critter ***&){};
+        virtual void move( Critter ***&);
+        virtual void breed(const Critter ***&){};
 
         char getSymbol();
         int getX_pos();
@@ -36,7 +37,9 @@ class Critter
         void print_board(Critter *** board, int rows, int cols);
         void setRows(int);
         void setColumns(int);
-        bool moveOutOfBounce(int);
+        bool checkBounds(int , int);
+	void resetMoveSuccess();
+        int getMoveSuccess();
         //helper function for breed testing
         //virtual void setAge(int ageIn);
 };
