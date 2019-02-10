@@ -27,8 +27,8 @@ class Ant : public Critter
 	public:
 		Ant(int x_pos, int y_pos);
 		~Ant(){};
-		void move(Critter ***boardIn, int rows, int cols);
-	 	void breed(Critter***, int, int);	// TODO: DETERMINE NECESSARY PARAMETERS ~HD
+		void move(Critter *** &);
+	 	void breed(Critter*** &);	// TODO: DETERMINE NECESSARY PARAMETERS ~HD
 };
 
 #endif
