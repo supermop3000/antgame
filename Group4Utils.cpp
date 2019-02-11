@@ -5,6 +5,7 @@
 ******************************************************************************/
 
 #include "Group4Utils.hpp"
+#include "Critter.hpp"
 #include <random>
 #include <iostream>
 #include <string>
@@ -154,4 +155,32 @@ int validIntMax(int maxInput)
     }
   }
   return value;
+}
+
+/******************************************************************************
+** void printBoard(Critter***, int numRows, int numCols
+** Description:	This function prints the board of the program
+******************************************************************************/
+void printBoard(Critter*** board, int size_y,int size_x)
+{
+    for(int i=0; i<size_y; i++)
+    {
+      for(int j=0; j<size_x; j++)
+      {
+        if(board[i][j] == NULL)
+        {
+          cout << "-";
+        }
+        else if(board[i][j]->getSymbol()=='X')
+        {
+          cout << "X";
+        }
+        else if(board[i][j]->getSymbol()=='O')
+        {
+          cout << "O";
+        }
+      }
+      cout << "\n";
+    }
+    cout << "\n";
 }

@@ -5,10 +5,11 @@
 ******************************************************************************/
 
 #ifndef GROUP4UTILS_HPP
-#define GROUP4UTILS_HPPP
+#define GROUP4UTILS_HPP
 
 #include <string>
 #include <iostream>
+#include "Critter.hpp"
 
 using std::string;
 
@@ -20,5 +21,7 @@ using std::string;
   int validInt();
   //validate integer input greater than 0 with a max variable
   int validIntMax(int maxInput);
+  // print the board of the program
+  void printBoard(Critter***, int, int);
 
 #endif

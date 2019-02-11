@@ -10,9 +10,9 @@ CXXFLAGS += -pedantic-errors
 CXXFLAGS += -g
 RM = /bin/rm -f
 
-OBJS = main.o Critter.o Doodlebug.o Group4Utils.o Ant.o
-SRCS = main.cpp Critter.cpp Doodlebug.cpp Group4Utils.cpp Ant.cpp
-HEADERS = Critter.hpp Doodlebug.hpp Group4Utils.hpp Ant.hpp
+OBJS = main.o Critter.o Doodlebug.o Group4Utils.o Ant.o menuFunctions.o
+SRCS = main.cpp Critter.cpp Doodlebug.cpp Group4Utils.cpp Ant.cpp menuFunctions.cpp
+HEADERS = Critter.hpp Doodlebug.hpp Group4Utils.hpp Ant.hpp menuFunctions.hpp
 
 main: ${SRCS} ${HEADERS}
 	${CXX} ${CXXFLAGS} ${SRCS} -o main

@@ -9,6 +9,7 @@
 #include "Critter.hpp"
 #include "Doodlebug.hpp"
 #include "Ant.hpp"
+#include "menuFunctions.hpp"
 #include <iostream>
 #include <string>
 
@@ -27,25 +28,21 @@ int main()
     int maxDoodbugs;
 
     Critter ***board;
-
-    cout << "\n\n" << "* - * - * PREDATOR PREY GAME * - * - *" << "\n";
-    cout << "- enter the number for your selection -" << "\n\n";
-    cout << "- please note we did the extra credit -" << "\n\n";
-    cout << "1. Play Game" << "\n";
-    cout << "2. Quit" << "\n\n";
+    
+    // display the main menu
+    dispMainMenu();
 
     playGame = validSelection();
 
     if(playGame == 1)
     {
-      cout << "Enter an integer greater than 1 for the number of steps" << "\n\n";
+      // ask the user for the number of steps
+      queryNumSteps();
+
       timeSteps = validInt();
-      cout << "\n";
 
-      cout << "Would you like custom settings or default settings?" << "\n\n";
-      cout << "1. Default Settings" << "\n";
-      cout << "2. Custom Settings" << "\n\n";
-
+      // ask the user if they want default settings or custom settings
+      querySettings();
       customSettings = validSelection();
       cout << "\n";
 
@@ -56,26 +53,22 @@ int main()
 
       else if(customSettings == 2)
       {
-        cout << "\n";
-        cout << "Enter an integer greater than 1 for the number of rows" << "\n\n";
+        // ask the user for the number of rows for the board
+        queryCustRows();
         size_x = validInt();
-        cout << "\n";
 
-        cout << "Enter an integer greater than 1 for the number of columns" << "\n\n";
+	// ask the user for the number of columns for the board
+	queryCustCols();
         size_y = validInt();
-        cout << "\n";
 
+	// ask the user for the number of ants for the board
         maxAnts = (size_x * size_y -1);
-
-        cout << "Enter an integer greater than 1 and less than " << "\n";
-        cout << maxAnts << " for the number of Ants" << "\n\n";
+	queryNumAnts(maxAnts);
         numAnts = validIntMax(maxAnts);
-        cout << "\n";
 
+	// ask the user for the number of Doodlebugs for the board
         maxDoodbugs = (size_x * size_y - maxAnts);
-
-        cout << "Enter an integer greater than 1 and less than " << "\n";
-        cout << maxDoodbugs << " for the number of doodlebugs" << "\n\n";
+	queryNumDood(maxDoodbugs);
         numDoodbugs = validIntMax(maxDoodbugs);
         cout << "\n";
 
@@ -144,26 +137,7 @@ int main()
     }
 
     //print starting board - this should be a function outside of main that just gets called
-    for(int i=0; i<size_y; i++)
-    {
-      for(int j=0; j<size_x; j++)
-      {
-        if(board[i][j] == NULL)
-        {
-          cout << "-";
-        }
-        else if(board[i][j]->getSymbol()=='X')
-        {
-          cout << "X";
-        }
-        else if(board[i][j]->getSymbol()=='O')
-        {
-          cout << "O";
-        }
-      }
-      cout << "\n";
-    }
-    cout << "\n";
+    printBoard(board, size_y, size_x);
     
     //test moving doodlebug
     for(int i=0; i<size_y; i++)
@@ -211,26 +185,7 @@ int main()
     cout << "\n" << "Printing board again" << "\n\n";
 
     //print board again to see if breed worked
-    for(int i=0; i<size_y; i++)
-    {
-      for(int j=0; j<size_x; j++)
-      {
-        if(board[i][j] == NULL)
-        {
-          cout << "-";
-        }
-        else if(board[i][j]->getSymbol()=='X')
-        {
-          cout << "X";
-        }
-        else if(board[i][j]->getSymbol()=='O')
-        {
-          cout << "O";
-        }
-      }
-      cout << "\n";
-    }
-
+    printBoard(board, size_y, size_x);
 
     //Doodlebug *doodle = new Doodlebug(10, 10);
 
