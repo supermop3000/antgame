@@ -16,7 +16,7 @@ using std::cout;
 void dispMainMenu();
 void queryNumSteps();
 void querySettings();
-// Custom Settings
+// Custom Settings Displays
 void queryCustRows();
 void queryCustCols();
 void queryNumAnts(int);
