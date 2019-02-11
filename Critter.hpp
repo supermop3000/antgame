@@ -17,16 +17,17 @@ class Critter
         int x_pos;
         int y_pos;
         int age;
+        int breedAge;
         char symbol;
         int rows;
         int columns;
         int moveSuccess;
 
     public:
-        Critter();
+        Critter(int, int);
         virtual ~Critter(){};
-        virtual void move( Critter ***&);
-        virtual void breed(const Critter ***&){};
+        virtual void move(Critter ***&) = 0;
+        virtual void breed(Critter ***);
 
         char getSymbol();
         int getX_pos();

@@ -18,6 +18,7 @@ class Doodlebug : public Critter
 
       void move(Critter *** &);
       void breed(const Critter *** &);
+      void starve();
       //helper function for setAge
       void setAge(int ageIn);
 };

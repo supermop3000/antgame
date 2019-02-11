@@ -7,11 +7,9 @@
 using std::cout;
 using std::endl;
 
-Doodlebug::Doodlebug(int x_pos, int y_pos):Critter()
+Doodlebug::Doodlebug(int x_pos, int y_pos):Critter(x_pos, y_pos)
 {
-   this->x_pos = x_pos;
-   this->y_pos = y_pos;
-   this->age = 0;
+   this->breedAge = 8;
    this->hunger = 0;
    this->symbol = 'X';
    this->moveSuccess = 0;
@@ -193,7 +191,7 @@ void Doodlebug::move(Critter*** &boardIn)
    }
 }
 
-
+/* breed handled in Critter class delete this later
 void Doodlebug::breed(const Critter *** &boardIn)
 {
    bool cellFree = false;
@@ -266,6 +264,21 @@ void Doodlebug::breed(const Critter *** &boardIn)
 
 
   }
+}
+*/
+
+/******************************************************************
+ ** Description: void breed(Critter***))
+ ** PUBLIC::2019.02.10:: LL
+ ** delete doodlebug if it hasn't eaten in 3 turns
+ ******************************************************************/
+void Doodlebug::starve()
+{
+    if (hunger == 3)
+    {
+        cout << "doodlebug starved" << endl;
+        delete this;
+    }
 }
 
 //helper function for breed test
