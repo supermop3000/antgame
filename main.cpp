@@ -233,11 +233,21 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
         // breedCritters function called on doodle
         // breedCritters called on ant
         // starve function
+
     // decrease the number of steps
     timeSteps--;
+
+    // if the program is about to end, ask the user to enter more steps or quit
+    if (timeSteps == 0)
+    {
+        queryContinue();
     }
 
-    //Delete the dynamically allocated board
+    }
+
+/*********************************************************************************
+** This area deletes the dynamically allocated Critter array
+*********************************************************************************/
 
     for(int i = 0; i <  size_y; i++)
     {

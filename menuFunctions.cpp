@@ -109,3 +109,21 @@ void queryNumDood(int maxDoodBugs)
    cout << "Enter an integer greater than 1 and less than \n";
    cout << maxDoodBugs << " for the number of Doodlebugs\n\n";
 }
+
+
+/********************************************************************
+** void queryNumDood(int)
+** description: This function queries the user for the number of
+**  steps the user would like to to take, or  exit the program.
+** notes:	
+********************************************************************/
+void queryContinue()
+{
+    cout << "\n";
+    cout << "====================================\n";
+    cout << "|Predator Prey Simulation Complete!|\n";
+    cout << "====================================\n\n";
+    cout << "How Many More Steps Would You Like\n";
+    cout << "     the Simulation to Take?\n";
+    cout << "  (Enter 0 To Quit the Program)\n";
+}

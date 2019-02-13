@@ -22,4 +22,6 @@ void queryCustCols();
 void queryNumAnts(int);
 void queryNumDood(int);
 
+void queryContinue();
+
 #endif
