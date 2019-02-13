@@ -160,6 +160,9 @@ int validIntMax(int maxInput)
 /******************************************************************************
 ** void printBoard(Critter***, int numRows, int numCols
 ** Description:	This function prints the board of the program
+**  This function takes a triple-pointer to a critter object in order to view
+**  the board with ants and doodlebugs. The 2 integers it takes represent the
+**  dimensions of the board.
 ******************************************************************************/
 void printBoard(Critter*** board, int size_y,int size_x)
 {
@@ -183,4 +186,53 @@ void printBoard(Critter*** board, int size_y,int size_x)
       cout << "\n";
     }
     cout << "\n";
+}
+
+/******************************************************************************
+** void placeDoodles(Critter***, int&, int, int, int);
+** Description:	This function adds starting doodlebugs to the board
+**  This function takes a triple-pointer to a critter object to add critters
+**  to the board. Furthermore this function takes a reference to an integer
+**  that serves as a counter for the number of doodlebugs, and integer to
+**  represent the number of doodlebugs to be created, and and 2 integers
+**  representing the side of the board.
+******************************************************************************/
+void placeDoodles(Critter*** board, int &doodCount, int numDoodbugs, int size_x, int size_y)
+{
+    while (doodCount < numDoodbugs)
+    {
+      int doodRowPlace = randIntRange(0, size_x-1);
+      int doodColPlace = randIntRange(0, size_y-1);
+      if(board[doodRowPlace][doodColPlace]==NULL)
+      {
+        board[doodRowPlace][doodColPlace] = new Doodlebug(doodRowPlace, doodColPlace);
+        //helper function setting doodlebug age to 8 to try to get breed to work
+        //board[doodRowPlace][doodColPlace]->setAge(age);
+        doodCount++;
+      }
+    }
+}
+
+/******************************************************************************
+** void placeAnts(Critter***, int&, int, int, int);
+** Description:	This function adds starting ants to the board
+**  This function takes a triple-pointer to a critter object to add critters
+**  to the board. Furthermore this function takes a reference to an integer
+**  that serves as a counter for the number of ants, and integer to
+**  represent the number of ants to be created, and and 2 integers
+**  representing the side of the board.
+******************************************************************************/
+void placeAnts(Critter*** board, int& antCount, int numAnts, int size_x, int size_y)
+{
+    while (antCount < numAnts)
+    {
+      int antRowPlace = randIntRange(0, size_x-1);
+      int antColPlace = randIntRange(0, size_y-1);
+      if(board[antRowPlace][antColPlace]==NULL)
+      {
+        board[antRowPlace][antColPlace] = new Ant(antRowPlace, antColPlace);
+
+        antCount++;
+      }
+    }
 }

@@ -10,6 +10,8 @@
 #include <string>
 #include <iostream>
 #include "Critter.hpp"
+#include "Doodlebug.hpp"
+#include "Ant.hpp"
 
 using std::string;
 
@@ -23,5 +25,9 @@ using std::string;
   int validIntMax(int maxInput);
   // print the board of the program
   void printBoard(Critter***, int, int);
+  // add starting doodlebugs to the board
+  void placeDoodles(Critter***, int&, int, int, int);
+  // add starting ants to the board
+  void placeAnts(Critter***, int&, int, int, int);
 
 #endif

@@ -28,7 +28,7 @@ int main()
     int maxDoodbugs;
 
     Critter ***board;
-    
+
     // display the main menu
     dispMainMenu();
 
@@ -57,18 +57,18 @@ int main()
         queryCustRows();
         size_x = validInt();
 
-	// ask the user for the number of columns for the board
-	queryCustCols();
+	    // ask the user for the number of columns for the board
+	    queryCustCols();
         size_y = validInt();
 
-	// ask the user for the number of ants for the board
+	    // ask the user for the number of ants for the board
         maxAnts = (size_x * size_y -1);
-	queryNumAnts(maxAnts);
+	    queryNumAnts(maxAnts);
         numAnts = validIntMax(maxAnts);
 
-	// ask the user for the number of Doodlebugs for the board
+	    // ask the user for the number of Doodlebugs for the board
         maxDoodbugs = (size_x * size_y - maxAnts);
-	queryNumDood(maxDoodbugs);
+	    queryNumDood(maxDoodbugs);
         numDoodbugs = validIntMax(maxDoodbugs);
         cout << "\n";
 
@@ -92,49 +92,28 @@ int main()
       }
     }*/
     board = new Critter**[size_y];
-        for(int i = 0; i < size_y; i++)
-         {
-            board[i] = new Critter*[size_x];
-            
-            for(int j = 0; j < size_x; j++)
-            {
-               board[i][j] = NULL;
-            }
-        }
+    for(int i = 0; i < size_y; i++)
+    {
+        board[i] = new Critter*[size_x];
 
+        for(int j = 0; j < size_x; j++)
+        {
+            board[i][j] = NULL;
+        }
+    }
+
+    // counters for the number of each Critter being placed.
     int doodCount = 0;
     int antCount = 0;
 
     //helper variable setting age to 8 for breed test
     //int age = 8;
 
-    //add starting doodle bugs to the board - this should be a function outside of main that just gets called
-    while (doodCount < numDoodbugs)
-    {
-      int doodRowPlace = randIntRange(0, size_x-1);
-      int doodColPlace = randIntRange(0, size_y-1);
-      if(board[doodRowPlace][doodColPlace]==NULL)
-      {
-        board[doodRowPlace][doodColPlace] = new Doodlebug(doodRowPlace, doodColPlace);
-        //helper function setting doodlebug age to 8 to try to get breed to work
-        //board[doodRowPlace][doodColPlace]->setAge(age);
-        doodCount++;
-      }
-    }
+    // Place Doodlebugs on the board
+    placeDoodles(board, doodCount, numDoodbugs, size_x, size_y);
 
-
-    //add starting ants to the board - this should be a function outside of main that just gets called
-    while (antCount < numAnts)
-    {
-      int antRowPlace = randIntRange(0, size_x-1);
-      int antColPlace = randIntRange(0, size_y-1);
-      if(board[antRowPlace][antColPlace]==NULL)
-      {
-        board[antRowPlace][antColPlace] = new Ant(antRowPlace, antColPlace);
-
-        antCount++;
-      }
-    }
+    // Place Ants on the board
+    placeAnts(board, antCount, numAnts, size_x, size_y);
 
     //print starting board - this should be a function outside of main that just gets called
     printBoard(board, size_y, size_x);
