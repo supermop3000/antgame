@@ -152,6 +152,11 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
     // loop through the simulation until the user decides to end the simulation
     while (timeSteps != 0)
     {
+
+        /*************************************
+        ** MOVE THE DOODLEBUG
+        *************************************/
+
         //test moving doodlebug
         for(int i=0; i<size_y; i++)
         {
@@ -234,14 +239,39 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
         // breedCritters called on ant
         // starve function
 
-    // decrease the number of steps
-    timeSteps--;
+        /*************************************
+        ** TODO:MOVE THE ANTS
+        *************************************/
+        // useful functions for testing
+        // printBoard(board, size_y, size_x);
 
-    // if the program is about to end, ask the user to enter more steps or quit
-    if (timeSteps == 0)
-    {
-        queryContinue();
-    }
+
+
+        /*************************************
+        ** TODO:BREED THE CRITTERS
+        *************************************/
+        // useful functions for testing
+        // printBoard(board, size_y, size_x);
+
+
+
+        /*************************************
+        ** TODO:STARVE THE DOODLEBUGS
+        *************************************/
+        // useful functions for testing
+        // printBoard(board, size_y, size_x);
+
+        // decrease the number of steps
+        timeSteps--;
+
+        // if the program is about to end, ask the user to enter more steps or quit
+        if (timeSteps == 0)
+        {
+            queryContinue();
+            //TODO: GET AND VALIDATE USER INPUT AND
+            // SET IT TO THE timeSteps variable
+
+        }
 
     }
 
