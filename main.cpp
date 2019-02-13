@@ -29,6 +29,12 @@ int main()
 
     Critter ***board;
 
+
+/*********************************************************************************
+** This area serves as the menu for the user to configure the ants, doodlebugs,
+** the board, and the number of steps the program should take.
+*********************************************************************************/
+
     // display the main menu
     dispMainMenu();
 
@@ -81,6 +87,18 @@ int main()
       return 0;
     }
 
+
+/*********************************************************************************
+** This area holds the creation of the board, along with its accompanying ants
+** and doodlebugs.
+*********************************************************************************/
+/* SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING
+
+    size_x = 10;
+    size_y = 10;
+
+SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
+
     //set board spaces to null
     /*board = new Critter**[size_y];
     for(int i = 0; i < size_y; i++)
@@ -117,34 +135,50 @@ int main()
 
     //print starting board - this should be a function outside of main that just gets called
     printBoard(board, size_y, size_x);
-    
-    //test moving doodlebug
-    for(int i=0; i<size_y; i++)
+
+
+/*********************************************************************************
+** This area contains all the simulated movement/feeding, breeding, and starving
+** the Ants and the Doodlebugs will take part in.
+*********************************************************************************/
+
+/* SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING
+
+    timeSteps = 1;
+
+SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
+
+
+    // loop through the simulation until the user decides to end the simulation
+    while (timeSteps != 0)
     {
-      for(int j=0; j<size_x; j++)
-      {
-          if(board[i][j] != NULL && board[i][j]->getSymbol() == 'X')
-          {
-            if(board[i][j]->getMoveSuccess() == 0)
+        //test moving doodlebug
+        for(int i=0; i<size_y; i++)
+        {
+            for(int j=0; j<size_x; j++)
             {
-              cout << "Attempting to move from row " << i;
-              cout << " and col " << j << "\n";
-                 board[i][j]->move(board);
-            }
-          }
-      }
-    }
-    //reset move success for next round, 
-    for(int i=0; i<size_y; i++)
-    {
-      for(int j=0; j<size_x; j++)
-      {
-          if(board[i][j] != NULL)
+            if(board[i][j] != NULL && board[i][j]->getSymbol() == 'X')
             {
-              board[i][j]->resetMoveSuccess();
+                if(board[i][j]->getMoveSuccess() == 0)
+                {
+                cout << "Attempting to move from row " << i;
+                cout << " and col " << j << "\n";
+                board[i][j]->move(board);
+                }
             }
-      }
-    }
+            }
+        }
+        //reset move success for next round, 
+        for(int i=0; i<size_y; i++)
+        {
+            for(int j=0; j<size_x; j++)
+            {
+                if(board[i][j] != NULL)
+                {
+                board[i][j]->resetMoveSuccess();
+                }
+            }
+        }
 
 
     //call breed - this should be a function outside of main that just gets called
@@ -161,10 +195,10 @@ int main()
       }
     }
 */
-    cout << "\n" << "Printing board again" << "\n\n";
+        cout << "\n" << "Printing board again" << "\n\n";
 
-    //print board again to see if breed worked
-    printBoard(board, size_y, size_x);
+        //print board again to see if breed worked
+        printBoard(board, size_y, size_x);
 
     //Doodlebug *doodle = new Doodlebug(10, 10);
 
@@ -199,17 +233,23 @@ int main()
         // breedCritters function called on doodle
         // breedCritters called on ant
         // starve function
-   for(int i = 0; i <  size_y; i++)
-   {
+    // decrease the number of steps
+    timeSteps--;
+    }
+
+    //Delete the dynamically allocated board
+
+    for(int i = 0; i <  size_y; i++)
+    {
       for(int j = 0; j < size_x; j++)
       {
          delete board[i][j];
       }
       delete[] board[i];
-   }
-   delete[] board;
-   board = NULL;
-   //delete doodle;
-   //doodle = NULL;
-   return 0;
+    }
+    delete[] board;
+    board = NULL;
+    //delete doodle;
+    //doodle = NULL;
+    return 0;
 }
