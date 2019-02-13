@@ -157,6 +157,49 @@ int validIntMax(int maxInput)
   return value;
 }
 
+
+/*********************************************************************
+** Description: validates user input for a non-negative integer
+*********************************************************************/
+int validNonNegative()
+{
+  string input = "";
+  bool cont = true;
+  int value = 0;
+  string error = "Invalid input. Please enter non-negative integer";
+
+  while (cont)
+  {
+    getline(cin, input);
+    stringstream ss(input);
+    ss >> value;
+
+    //if input is non integer or <=0, error
+    if (value < 0)
+    {
+      cout << error << "\n";
+    }
+
+    //if input empty, error
+    else if (input.empty())
+    {
+      cout << error << "\n";
+    }
+
+    //if input contains decimal, error
+    else if(input.find('.')!=string::npos)
+    {
+      cout << error << "\n";
+    }
+
+    else
+    {
+      return value;
+    }
+  }
+  return value;
+}
+
 /******************************************************************************
 ** void printBoard(Critter***, int numRows, int numCols
 ** Description:	This function prints the board of the program

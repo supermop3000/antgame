@@ -21,6 +21,8 @@ using std::string;
   int validSelection();
   //validate integer input greater than 0
   int validInt();
+  //validate integer input is non-negative
+  int validNonNegative();
   //validate integer input greater than 0 with a max variable
   int validIntMax(int maxInput);
   // print the board of the program

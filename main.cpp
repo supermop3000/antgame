@@ -270,7 +270,7 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
             queryContinue();
             //TODO: GET AND VALIDATE USER INPUT AND
             // SET IT TO THE timeSteps variable
-
+            timeSteps = validNonNegative();
         }
 
     }
