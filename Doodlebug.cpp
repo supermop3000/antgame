@@ -15,7 +15,7 @@ Doodlebug::Doodlebug(int x_pos, int y_pos):Critter(x_pos, y_pos)
    this->moveSuccess = 0;
 }
 
-void Doodlebug::move(Critter*** &boardIn)
+void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
 {
    int random = randIntRange(0,3);
    bool antNear = false;
@@ -30,7 +30,7 @@ void Doodlebug::move(Critter*** &boardIn)
    {
       case 0: new_x = this->x_pos - 1;
               new_y = this->y_pos;
-              inBounds = checkBounds(new_x, new_y);
+              inBounds = checkBounds(new_x, new_y, size_x, size_y);
               if(inBounds && boardIn[new_x][new_y] != NULL && boardIn[new_x][new_y]->getSymbol() == 'O')
               {
                  antNear = true;   
@@ -45,7 +45,7 @@ void Doodlebug::move(Critter*** &boardIn)
               }
       case 1: new_x = this->x_pos;
               new_y = this->y_pos + 1;
-              inBounds = checkBounds(new_x, new_y);
+              inBounds = checkBounds(new_x, new_y, size_x, size_y);
               if(inBounds && boardIn[new_x][new_y] != NULL && boardIn[new_x][new_y]->getSymbol() == 'O')
               {
                  antNear = true;
@@ -60,7 +60,7 @@ void Doodlebug::move(Critter*** &boardIn)
               }
       case 2: new_x = this->x_pos + 1;
               new_y = this->y_pos;
-              inBounds = checkBounds(new_x, new_y);
+              inBounds = checkBounds(new_x, new_y, size_x, size_y);
               if(inBounds && boardIn[new_x][new_y] != NULL && boardIn[new_x][new_y]->getSymbol() == 'O')
               {
                  antNear = true;
@@ -75,7 +75,7 @@ void Doodlebug::move(Critter*** &boardIn)
               }
       case 3: new_x = this->x_pos;
               new_y = this->y_pos - 1;
-              inBounds = checkBounds(new_x, new_y);
+              inBounds = checkBounds(new_x, new_y, size_x, size_y);
               if(inBounds && boardIn[new_x][new_y] != NULL && boardIn[new_x][new_y]->getSymbol() == 'O')
               {
                  antNear = true;
@@ -113,7 +113,7 @@ void Doodlebug::move(Critter*** &boardIn)
       {
          case 0: new_x = this->x_pos - 1;
                  new_y = this->y_pos;
-                 inBounds = checkBounds(new_x, new_y);
+                 inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
                  {
                     cellFree = true;   
@@ -128,7 +128,7 @@ void Doodlebug::move(Critter*** &boardIn)
                  }
          case 1: new_x = this->x_pos;
                  new_y = this->y_pos + 1;
-                 inBounds = checkBounds(new_x, new_y);
+                 inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
                  {
                     cellFree = true;
@@ -143,7 +143,7 @@ void Doodlebug::move(Critter*** &boardIn)
                  }  
          case 2: new_x = this->x_pos + 1;
                  new_y = this->y_pos;
-                 inBounds = checkBounds(new_x, new_y);
+                 inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
                  {
                     cellFree = true;
@@ -158,7 +158,7 @@ void Doodlebug::move(Critter*** &boardIn)
                  }
          case 3: new_x = this->x_pos;
                  new_y = this->y_pos - 1;
-                 inBounds = checkBounds(new_x, new_y);
+                 inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
                  {
                     cellFree = true;
@@ -189,6 +189,9 @@ void Doodlebug::move(Critter*** &boardIn)
          return;
       }
    }
+    
+    // age doodlebug
+    age++;
 }
 
 /* breed handled in Critter class delete this later
@@ -276,13 +279,15 @@ void Doodlebug::starve()
 {
     if (hunger == 3)
     {
-        cout << "doodlebug starved" << endl;
+        cout << "a doodlebug has starved" << endl;
         delete this;
     }
 }
 
+/*
 //helper function for breed test
 void Doodlebug::setAge(int ageIn)
 {
   this->age = ageIn;
 }
+*/

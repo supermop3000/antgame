@@ -15,6 +15,15 @@
 
 using std::cout;
 
+// prototypes
+void moveCritters(Critter ***, int, int, char, std::string);
+
+void resetCritterMoveSuccess(Critter ***, int, int);
+
+void breedCritters(Critter ***, int, int, char, std::string);
+
+void starveCritters(Critter ***, int, int, char, std::string);
+
 int main()
 {
     int playGame;
@@ -152,114 +161,48 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
     // loop through the simulation until the user decides to end the simulation
     while (timeSteps != 0)
     {
-
+        
         /*************************************
-        ** MOVE THE DOODLEBUG
+        ** MOVE THE DOODLEBUGS
         *************************************/
-
-        //test moving doodlebug
-        for(int i=0; i<size_y; i++)
-        {
-            for(int j=0; j<size_x; j++)
-            {
-            if(board[i][j] != NULL && board[i][j]->getSymbol() == 'X')
-            {
-                if(board[i][j]->getMoveSuccess() == 0)
-                {
-                cout << "Attempting to move from row " << i;
-                cout << " and col " << j << "\n";
-                board[i][j]->move(board);
-                }
-            }
-            }
-        }
-        //reset move success for next round, 
-        for(int i=0; i<size_y; i++)
-        {
-            for(int j=0; j<size_x; j++)
-            {
-                if(board[i][j] != NULL)
-                {
-                board[i][j]->resetMoveSuccess();
-                }
-            }
-        }
-
-
-    //call breed - this should be a function outside of main that just gets called
-/*    for(int i=0; i<size_y; i++)
-    {
-      for(int j=0; j<size_x; j++)
-      {
-          if(board[i][j] != NULL && board[i][j]->getSymbol() == 'X')
-            {
-              cout << "Attempting to breed from row " << i;
-              cout << " and col " << j << "\n";
-              board[i][j]->breed(board);
-            }
-      }
-    }
-*/
-        cout << "\n" << "Printing board again" << "\n\n";
-
-        //print board again to see if breed worked
-        printBoard(board, size_y, size_x);
-
-    //Doodlebug *doodle = new Doodlebug(10, 10);
-
-
-    //add as print board function in utilities folder print_board(Critter ***, rows, col)
-
-    //doodle->move(board);
-    /*doodle->breed(board);
-    for(int i = 0; i < size_y; i++)
-    {
-        for(int k = 0; k < size_x; k++)
-        {
-            std::cout << board[i][k]->getSymbol();
-        }
-        std::cout << std::endl;
-    }*/
-    //doodle->move(board);
-    // get steps
-    // get steps
-    // place critters
-    // display initial board
-    // do while (int steps = 0 < steps)
-        // below could be function moveCritters(Critter***, char symbol)
-        // first call moveCritters with symbol X
-        // for i < size_x
-            // for j < size_y
-                // if (board[size_x][size_y]->getSymbol == 'X')
-                    // if (board[size_x][size_y]->move(board)) ... deallocate the spot the bug is moving to, new spot = old spot
-                        // board[size_x][size_y] = new Critter... former spot will be set to new critter
-                    // if move() returns false nothing happens
-        // call moveCritters with symbol 'O'
-        // breedCritters function called on doodle
-        // breedCritters called on ant
-        // starve function
-
-        /*************************************
-        ** TODO:MOVE THE ANTS
-        *************************************/
-        // useful functions for testing
+        
+        moveCritters(board, size_x, size_y, 'X', "doodlebug");
+        
+        resetCritterMoveSuccess(board, size_x, size_y);
+        
         // printBoard(board, size_y, size_x);
-
-
+        
+        /*************************************
+         ** MOVE THE ANTS
+         *************************************/
+        
+        moveCritters(board, size_x, size_y, 'O', "ant");
+        
+        resetCritterMoveSuccess(board, size_x, size_y);
+        
+        // printBoard(board, size_y, size_x);
 
         /*************************************
         ** TODO:BREED THE CRITTERS
         *************************************/
-        // useful functions for testing
+
+    
+        breedCritters(board, size_x, size_y, 'X', "doodlebug");
+        breedCritters(board, size_x, size_y, 'O', "ant");
+        
         // printBoard(board, size_y, size_x);
-
-
-
+        
         /*************************************
         ** TODO:STARVE THE DOODLEBUGS
         *************************************/
-        // useful functions for testing
+        // starveCritters(board, size_x, size_y, 'X', "doodlebug");
+        
         // printBoard(board, size_y, size_x);
+        
+        cout << "\n" << "Printing board again" << "\n\n";
+        
+        //print board again to see if breed worked
+        printBoard(board, size_y, size_x);
 
         // decrease the number of steps
         timeSteps--;
@@ -292,4 +235,68 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
     //delete doodle;
     //doodle = NULL;
     return 0;
+}
+
+void moveCritters(Critter *** board, int size_x, int size_y, char symbol, std::string type)
+{
+    for(int i=0; i<size_y; i++)
+    {
+        for(int j=0; j<size_x; j++)
+        {
+            if(board[i][j] != NULL && board[i][j]->getSymbol() == symbol)
+            {
+                if(board[i][j]->getMoveSuccess() == 0)
+                {
+                    // cout << "Attempting to move " << type << " from row " << i;
+                    // cout << " and col " << j << "\n";
+                    board[i][j]->move(board, size_x, size_y);
+                }
+            }
+        }
+    }
+}
+
+void resetCritterMoveSuccess(Critter *** board, int size_x, int size_y)
+{
+    //reset move success for next round,
+    for(int i=0; i<size_y; i++)
+    {
+        for(int j=0; j<size_x; j++)
+        {
+            if(board[i][j] != NULL)
+            {
+                board[i][j]->resetMoveSuccess();
+            }
+        }
+    }
+}
+
+void breedCritters(Critter *** board, int size_x, int size_y, char symbol, std::string type)
+{
+    for(int i=0; i<size_y; i++)
+    {
+        for(int j=0; j<size_x; j++)
+        {
+            if(board[i][j] != NULL && board[i][j]->getSymbol() == symbol)
+            {
+                board[i][j]->breed(board, size_x, size_y);
+            }
+        }
+    }
+}
+
+void starveCritters(Critter *** board, int size_x, int size_y, char symbol, std::string type)
+{
+    for(int i=0; i<size_y; i++)
+    {
+        for(int j=0; j<size_x; j++)
+        {
+            if(board[i][j] != NULL && board[i][j]->getSymbol() == symbol)
+            {
+                cout << "A " << type << " has starved at row" << i;
+                cout << " and col " << j << "\n";
+                board[i][j]->starve();
+            }
+        }
+    }
 }

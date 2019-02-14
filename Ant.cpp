@@ -37,7 +37,7 @@ Ant::Ant(int x_pos, int y_pos):Critter(x_pos, y_pos)
 **              TODO:DESCRIBE ARGUMENTS	 			   ********************************
 **		This function also
 **************************************************************************************************/
-void Ant::move(Critter *** &boardIn)
+void Ant::move(Critter *** &boardIn, int size_x, int size_y)
 {
       int new_x, new_y;
       bool cellFree = false;
@@ -48,7 +48,7 @@ void Ant::move(Critter *** &boardIn)
       {
          case 0: new_x = this->x_pos - 1;
                  new_y = this->y_pos;
-                 inBounds = checkBounds(new_x, new_y);
+                 inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
                  {
                     cellFree = true;   
@@ -63,7 +63,7 @@ void Ant::move(Critter *** &boardIn)
                  }
          case 1: new_x = this->x_pos;
                  new_y = this->y_pos + 1;
-                 inBounds = checkBounds(new_x, new_y);
+                 inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
                  {
                     cellFree = true;
@@ -78,7 +78,7 @@ void Ant::move(Critter *** &boardIn)
                  }  
          case 2: new_x = this->x_pos + 1;
                  new_y = this->y_pos;
-                 inBounds = checkBounds(new_x, new_y);
+                 inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
                  {
                     cellFree = true;
@@ -93,7 +93,7 @@ void Ant::move(Critter *** &boardIn)
                  }
          case 3: new_x = this->x_pos;
                  new_y = this->y_pos - 1;
-                 inBounds = checkBounds(new_x, new_y);
+                 inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
                  {
                     cellFree = true;
@@ -123,6 +123,9 @@ void Ant::move(Critter *** &boardIn)
          this->moveSuccess = 1;
          return;
       }
+   
+     // age ants
+     age++;
    
 }
 

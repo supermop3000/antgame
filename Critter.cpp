@@ -68,6 +68,11 @@ int Critter::getY_pos()
     return y_pos;
 }
 
+int Critter::getAge()
+{
+    return age;
+}
+
 /******************************************************************************
  **                    Critter::moveOutOfBounce(int direction)
  ** Description: moveOutOfBounce takes an integer that represents the direction
@@ -76,14 +81,14 @@ int Critter::getY_pos()
  **              It returns false if the move does not go out of bounds, and
  **              true if the move would result in going out of bounds.
  ******************************************************************************/
-bool Critter::checkBounds(int new_x, int new_y)
+bool Critter::checkBounds(int new_x, int new_y, int size_x, int size_y)
 {
     bool outOfBounce = true;
 
-    if(new_x < 0 || new_x > 19) //TODO NEED TO MAKE ROWS AND COLUMNS PART OF CRITTER CONSTRUCTOR TO USE ROWS AND COLUMNS CRITERIA FOR BOUNDS FUNCTION
+    if(new_x < 0 || new_x > size_x - 1) //TODO NEED TO MAKE ROWS AND COLUMNS PART OF CRITTER CONSTRUCTOR TO USE ROWS AND COLUMNS CRITERIA FOR BOUNDS FUNCTION
       outOfBounce = false;
 
-    if(new_y < 0 || new_y > 19)
+    if(new_y < 0 || new_y > size_y - 1)
       outOfBounce = false;
 
  /*   if (direction == 0) //Direction North (move row down 1)
@@ -160,22 +165,23 @@ void Critter::setAge(int ageIn)
  ** to breed, identifies whether there are available spots to breed to,
  ** then randomly selects a spot to breed to
  ******************************************************************/
-void Critter::breed(Critter *** boardIn)
+void Critter::breed(Critter *** boardIn, int size_x, int size_y)
 {
     // check if critter is of breeding age
-    if (age % breedAge == 0)
+    if ((age != 0) && (age % breedAge == 0))
     {
+        
          // holds the randomly generated integer for choosing a direction
          int randomRoll;
         
          // checks if any adjacent cells are free
-         bool cellFree = true;
+         bool cellFree = false;
         
          // holds values that indicate the location of an open space
          std::vector<int> openSpace;
         
          // Check if x_pos + 1 is free TODO: OR OUT OF BOUNDS
-         if (checkBounds((x_pos + 1), y_pos) && boardIn[x_pos + 1][y_pos] == NULL)
+         if (checkBounds((x_pos + 1), y_pos, size_x, size_y) && boardIn[y_pos][x_pos + 1] == NULL)
          {
              // 0 indicates the east space is free
              openSpace.push_back(0);
@@ -187,7 +193,7 @@ void Critter::breed(Critter *** boardIn)
              }
          }
          // Check if x_pos - 1 is free
-         if (checkBounds((x_pos - 1), y_pos) && boardIn[x_pos - 1][y_pos] == NULL)
+         if (checkBounds((x_pos - 1), y_pos, size_x, size_y) && boardIn[y_pos][x_pos - 1] == NULL)
          {
              // 1 indicates the west free
              openSpace.push_back(1);
@@ -199,7 +205,7 @@ void Critter::breed(Critter *** boardIn)
          }
         
          // Check if y_pos + 1 is free
-         if (checkBounds(x_pos, (y_pos + 1)) && boardIn[x_pos][y_pos + 1] == NULL)
+         if (checkBounds(x_pos, (y_pos + 1), size_x, size_y) && boardIn[y_pos + 1][x_pos] == NULL)
          {
              // 2 indicates north free
              openSpace.push_back(2);
@@ -210,7 +216,7 @@ void Critter::breed(Critter *** boardIn)
          }
         
          // Check if y_pos - 1 is free
-         if (checkBounds(x_pos, (y_pos - 1)) && boardIn[x_pos + 1][y_pos] == NULL)
+         if (checkBounds(x_pos, (y_pos - 1), size_x, size_y) && boardIn[y_pos][x_pos + 1] == NULL)
          {
              // 3 indicates south free
              openSpace.push_back(3);
@@ -223,8 +229,11 @@ void Critter::breed(Critter *** boardIn)
          // adjacent open cell exists
          if (cellFree == true)
          {
+             // todo delete for testing
+             cout << "a " << symbol << " critter of age " << age << " is breeding" << endl;
+             
              // randomly roll a number between 0 and (size of open Space vector - 1)
-             randomRoll = randIntRange(0, openSpace.size() - 1);
+             randomRoll = randIntRange(0, (int)openSpace.size() - 1);
              
              // INTEGERS INSIDE VECTOR INDICATE THE FOLLOWING
              // 0 = x_pos + 1
@@ -269,7 +278,7 @@ void Critter::breed(Critter *** boardIn)
                  
                  else if (symbol == 'X')
                  {
-                     boardIn[x_pos][y_pos + 1] = new Ant(x_pos,y_pos + 1);
+                     boardIn[x_pos][y_pos + 1] = new Ant(x_pos, y_pos + 1);
                  }
 
              }
@@ -288,11 +297,19 @@ void Critter::breed(Critter *** boardIn)
                  }
              }
          }
+        
+        /* todo delete
+         else
+         {
+             cout << "critter attempted to breed but there are no vacant spaces adjacent" << endl;
+         }
+         */
+        
+
     }
-    
-    // {todo} for testing purposes delete later
-    else
-    {
-        std::cout << "no spaces available to breed to" << std::endl;
-    }
+}
+
+void Critter::starve()
+{
+    cout << "this critter is hungry" << endl;
 }

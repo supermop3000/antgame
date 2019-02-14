@@ -25,8 +25,8 @@ class Ant : public Critter
 	public:
 		Ant(int x_pos, int y_pos);
 		~Ant(){};
-		void move(Critter *** &);
-	 	void breed(Critter*** &);	// TODO: DETERMINE NECESSARY PARAMETERS ~HD
+		void move(Critter *** &, int, int);
+	 	// void breed(Critter*** &, int, int);	// TODO: DETERMINE NECESSARY PARAMETERS ~HD
 };
 
 #endif
