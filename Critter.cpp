@@ -278,7 +278,7 @@ void Critter::breed(Critter *** boardIn, int size_x, int size_y)
                  
                  else if (symbol == 'X')
                  {
-                     boardIn[x_pos][y_pos + 1] = new Ant(x_pos, y_pos + 1);
+                     boardIn[x_pos][y_pos + 1] = new Doodlebug(x_pos, y_pos + 1);
                  }
 
              }
@@ -293,7 +293,7 @@ void Critter::breed(Critter *** boardIn, int size_x, int size_y)
                  
                  else if (symbol == 'X')
                  {
-                     boardIn[x_pos][y_pos - 1] = new Ant(x_pos, y_pos - 1);
+                     boardIn[x_pos][y_pos - 1] = new Doodlebug(x_pos, y_pos - 1);
                  }
              }
          }
