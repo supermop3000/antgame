@@ -19,8 +19,8 @@ class Critter
         int age;
         int breedAge;
         char symbol;
-        int rows;
-        int columns;
+//        int rows;
+//        int columns;
         int moveSuccess;
 
     public:
@@ -36,10 +36,10 @@ class Critter
         int getY_pos();
         void setY_pos(int);
         int getAge();
-        void createBoard(Critter*** board, int rowIn, int colIn, int numAntsIn, int numDoodsIn);
-        void print_board(Critter *** board, int rows, int cols);
-        void setRows(int);
-        void setColumns(int);
+//        void createBoard(Critter*** board, int rowIn, int colIn, int numAntsIn, int numDoodsIn);
+//        void print_board(Critter *** board, int rows, int cols);
+//        void setRows(int);
+//        void setColumns(int);
         bool checkBounds(int, int, int, int);
 	void resetMoveSuccess();
         int getMoveSuccess();
