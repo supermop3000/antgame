@@ -26,19 +26,21 @@ class Critter
     public:
         Critter(int, int);
         virtual ~Critter(){};
-        virtual void move(Critter ***&) = 0;
-        virtual void breed(Critter ***);
+        virtual void move(Critter ***&, int, int) = 0;
+        virtual void breed(Critter ***, int, int);
+        virtual void starve();
 
         char getSymbol();
         int getX_pos();
         void setX_pos(int);
         int getY_pos();
         void setY_pos(int);
+        int getAge();
         void createBoard(Critter*** board, int rowIn, int colIn, int numAntsIn, int numDoodsIn);
         void print_board(Critter *** board, int rows, int cols);
         void setRows(int);
         void setColumns(int);
-        bool checkBounds(int , int);
+        bool checkBounds(int, int, int, int);
 	void resetMoveSuccess();
         int getMoveSuccess();
         //helper function for breed testing
