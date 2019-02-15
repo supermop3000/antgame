@@ -31,7 +31,7 @@ int main()
     int timeSteps;
     int size_x = 20;
     int size_y = 20;
-    int numAnts = 10;
+    int numAnts = 100;
     int numDoodbugs = 5;
     int maxAnts;
     int maxDoodbugs;
@@ -156,7 +156,7 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
     timeSteps = 1;
 
 SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
-
+    int stepCounter = 0;
 
     // loop through the simulation until the user decides to end the simulation
     while (timeSteps != 0)
@@ -170,8 +170,6 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
         
         resetCritterMoveSuccess(board, size_x, size_y);
         
-        // printBoard(board, size_y, size_x);
-        
         /*************************************
          ** MOVE THE ANTS
          *************************************/
@@ -179,28 +177,23 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
         moveCritters(board, size_x, size_y, 'O', "ant");
         
         resetCritterMoveSuccess(board, size_x, size_y);
-        
-        // printBoard(board, size_y, size_x);
 
         /*************************************
-        ** TODO:BREED THE CRITTERS
+        ** BREED THE CRITTERS
         *************************************/
 
     
         breedCritters(board, size_x, size_y, 'X', "doodlebug");
         breedCritters(board, size_x, size_y, 'O', "ant");
         
-        // printBoard(board, size_y, size_x);
-        
         /*************************************
-        ** TODO:STARVE THE DOODLEBUGS
+        ** STARVE THE DOODLEBUGS
         *************************************/
-        // starveCritters(board, size_x, size_y, 'X', "doodlebug");
-        
-        // printBoard(board, size_y, size_x);
-        
+//        starveCritters(board, size_x, size_y, 'X', "doodlebug");
+
+        cout << "\nStep " << ++stepCounter << " Completed!\n";
         cout << "\n" << "Printing board again" << "\n\n";
-        
+
         //print board again to see if breed worked
         printBoard(board, size_y, size_x);
 
@@ -211,8 +204,6 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
         if (timeSteps == 0)
         {
             queryContinue();
-            //TODO: GET AND VALIDATE USER INPUT AND
-            // SET IT TO THE timeSteps variable
             timeSteps = validNonNegative();
         }
 
