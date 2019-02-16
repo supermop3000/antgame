@@ -181,7 +181,7 @@ void Critter::breed(Critter *** boardIn, int size_x, int size_y)
          std::vector<int> openSpace;
         
          // Check if x_pos + 1 is free TODO: OR OUT OF BOUNDS
-         if (checkBounds((x_pos + 1), y_pos, size_x, size_y) && boardIn[y_pos][x_pos + 1] == NULL)
+         if (checkBounds((x_pos + 1), y_pos, size_x, size_y) && boardIn[x_pos + 1][y_pos] == NULL)
          {
              // 0 indicates the east space is free
              openSpace.push_back(0);
@@ -193,7 +193,7 @@ void Critter::breed(Critter *** boardIn, int size_x, int size_y)
              }
          }
          // Check if x_pos - 1 is free
-         if (checkBounds((x_pos - 1), y_pos, size_x, size_y) && boardIn[y_pos][x_pos - 1] == NULL)
+         if (checkBounds((x_pos - 1), y_pos, size_x, size_y) && boardIn[x_pos - 1][y_pos] == NULL)
          {
              // 1 indicates the west free
              openSpace.push_back(1);
@@ -205,7 +205,7 @@ void Critter::breed(Critter *** boardIn, int size_x, int size_y)
          }
         
          // Check if y_pos + 1 is free
-         if (checkBounds(x_pos, (y_pos + 1), size_x, size_y) && boardIn[y_pos + 1][x_pos] == NULL)
+         if (checkBounds(x_pos, (y_pos + 1), size_x, size_y) && boardIn[x_pos][y_pos + 1] == NULL)
          {
              // 2 indicates north free
              openSpace.push_back(2);
@@ -216,7 +216,7 @@ void Critter::breed(Critter *** boardIn, int size_x, int size_y)
          }
         
          // Check if y_pos - 1 is free
-         if (checkBounds(x_pos, (y_pos - 1), size_x, size_y) && boardIn[y_pos][x_pos + 1] == NULL)
+         if (checkBounds(x_pos, (y_pos - 1), size_x, size_y) && boardIn[x_pos][y_pos - 1] == NULL)
          {
              // 3 indicates south free
              openSpace.push_back(3);
