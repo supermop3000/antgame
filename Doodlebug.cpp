@@ -1,4 +1,9 @@
-
+/**********************************************************************
+** Program name: Group Project
+** Author:  Group 4
+** Date: 2/15/2019
+** Description: This is the implementation file of the Doodlebug class
+**********************************************************************/
 
 #include "Doodlebug.hpp"
 #include "Group4Utils.hpp"
