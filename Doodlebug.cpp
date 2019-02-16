@@ -31,9 +31,13 @@ void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
    int attempts = 0;
 
    //check if ant is in an adjacent cell
-   switch (random) 
-   {
-      case 0: new_x = this->x_pos - 1;
+   //switch (random) 
+   //{
+      while(attempts < 4)
+      {
+          if(random == 0)
+          {
+     /* case 0:*/ new_x = this->x_pos - 1;
               new_y = this->y_pos;
               inBounds = checkBounds(new_x, new_y, size_x, size_y);
               if(inBounds && boardIn[new_x][new_y] != NULL && boardIn[new_x][new_y]->getSymbol() == 'O')
@@ -48,7 +52,11 @@ void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
                  attempts++; 
                  random = 1;
               }
-      case 1: new_x = this->x_pos;
+          }
+      //case 1:
+         if(random == 1)
+         { 
+              new_x = this->x_pos;
               new_y = this->y_pos + 1;
               inBounds = checkBounds(new_x, new_y, size_x, size_y);
               if(inBounds && boardIn[new_x][new_y] != NULL && boardIn[new_x][new_y]->getSymbol() == 'O')
@@ -63,7 +71,11 @@ void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
                  attempts++; 
                  random = 2;
               }
-      case 2: new_x = this->x_pos + 1;
+        }
+      //case 2: 
+        if(random == 2)
+        {
+              new_x = this->x_pos + 1;
               new_y = this->y_pos;
               inBounds = checkBounds(new_x, new_y, size_x, size_y);
               if(inBounds && boardIn[new_x][new_y] != NULL && boardIn[new_x][new_y]->getSymbol() == 'O')
@@ -78,7 +90,11 @@ void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
                  attempts++; 
                  random = 3;
               }
-      case 3: new_x = this->x_pos;
+        }
+      //case 3: 
+        if(random == 3)
+        {
+              new_x = this->x_pos;
               new_y = this->y_pos - 1;
               inBounds = checkBounds(new_x, new_y, size_x, size_y);
               if(inBounds && boardIn[new_x][new_y] != NULL && boardIn[new_x][new_y]->getSymbol() == 'O')
@@ -93,10 +109,12 @@ void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
                  attempts++;
                  random = 0;
               }
+       }
    }
 
    if(antNear == true)
    {
+      cout << "ant near doodlebug. Doodlebug at row " << x_pos << "column " <<y_pos<< "ant at row " <<new_x<< "col " << new_y << endl;
       delete boardIn[new_x][new_y]; //delete Ant at the new x,y position
       //set pointer at new x,y position equal to the Doodlebug point that is moving
       boardIn[new_x][new_y] = boardIn[this->x_pos][this->y_pos];      
@@ -114,9 +132,13 @@ void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
       attempts = 0;
       this->hunger += 1;
       random = randIntRange(0,3);
-      switch (random) 
+  //    switch (random) 
+      while(attempts < 4)
       {
-         case 0: new_x = this->x_pos - 1;
+        // case 0: 
+        if(random == 0)
+        {
+                 new_x = this->x_pos - 1;
                  new_y = this->y_pos;
                  inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
@@ -131,7 +153,11 @@ void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
                     attempts++;
                     random = 1;
                  }
-         case 1: new_x = this->x_pos;
+        }
+        if(random == 1)
+        {
+       //  case 1: 
+                 new_x = this->x_pos;
                  new_y = this->y_pos + 1;
                  inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
@@ -146,7 +172,11 @@ void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
                     attempts++;
                     random = 2;
                  }  
-         case 2: new_x = this->x_pos + 1;
+         }
+         if(random == 2)
+         {
+         //case 2: 
+                 new_x = this->x_pos + 1;
                  new_y = this->y_pos;
                  inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
@@ -161,7 +191,11 @@ void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
                     attempts++;
                     random = 3;
                  }
-         case 3: new_x = this->x_pos;
+         }
+         if(random == 3)
+         {
+         //case 3: 
+                 new_x = this->x_pos;
                  new_y = this->y_pos - 1;
                  inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
@@ -176,11 +210,12 @@ void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
                     attempts++;
                     random = 0;
                  }
+        }
       }
 
       if(cellFree == true)
       {
-         delete  boardIn[new_x][new_y];
+         //delete  boardIn[new_x][new_y];
          boardIn[new_x][new_y] = boardIn[this->x_pos][this->y_pos];
          boardIn[this->x_pos][this->y_pos] = NULL;
          this->x_pos = new_x;
@@ -282,9 +317,9 @@ void Doodlebug::breed(const Critter *** &boardIn)
  ******************************************************************/
 void Doodlebug::starve(Critter*** board)
 {
-    if (hunger == 3)
+    if (this->hunger == 3)
     {
-        cout << "a doodlebug has starved" << endl;
+        cout << "a doodlebug has beed deleted at row " << x_pos << " col " << y_pos << endl;
         delete board[x_pos][y_pos];
         board[x_pos][y_pos] = NULL;
     }
