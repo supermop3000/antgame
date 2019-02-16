@@ -309,7 +309,8 @@ void Critter::breed(Critter *** boardIn, int size_x, int size_y)
     }
 }
 
-void Critter::starve(Critter***)
+bool Critter::starve(Critter***)
 {
     cout << "\n<!>ERROR:CRITTER MOVE WAS CALLED<!>\n" << endl;
+    return false;
 }

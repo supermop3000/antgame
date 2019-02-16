@@ -28,7 +28,7 @@ class Critter
         virtual ~Critter(){};
         virtual void move(Critter ***&, int, int) = 0;
         virtual void breed(Critter ***, int, int);
-        virtual void starve(Critter***);
+        virtual bool starve(Critter***);
 
         char getSymbol();
         int getX_pos();
