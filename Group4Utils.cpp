@@ -209,13 +209,15 @@ int validNonNegative()
 ******************************************************************************/
 void printBoard(Critter*** board, int size_y,int size_x)
 {
+    cout << "\n" << string(size_y + 2, '=') << "\n";
     for(int i=0; i<size_y; i++)
     {
+      cout << "|";
       for(int j=0; j<size_x; j++)
       {
         if(board[i][j] == NULL)
         {
-          cout << "-";
+          cout << " ";
         }
         else if(board[i][j]->getSymbol()=='X')
         {
@@ -226,9 +228,9 @@ void printBoard(Critter*** board, int size_y,int size_x)
           cout << "O";
         }
       }
-      cout << "\n";
+      cout << "|\n";
     }
-    cout << "\n";
+    cout << string(size_y + 2, '=') << "\n";
 }
 
 /******************************************************************************
