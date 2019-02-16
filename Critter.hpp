@@ -28,7 +28,7 @@ class Critter
         virtual ~Critter(){};
         virtual void move(Critter ***&, int, int) = 0;
         virtual void breed(Critter ***, int, int);
-        virtual void starve();
+        virtual void starve(Critter***);
 
         char getSymbol();
         int getX_pos();
@@ -41,7 +41,7 @@ class Critter
 //        void setRows(int);
 //        void setColumns(int);
         bool checkBounds(int, int, int, int);
-	void resetMoveSuccess();
+	    void resetMoveSuccess();
         int getMoveSuccess();
         //helper function for breed testing
         //virtual void setAge(int ageIn);

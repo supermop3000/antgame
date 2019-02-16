@@ -272,15 +272,16 @@ void Doodlebug::breed(const Critter *** &boardIn)
 
 /******************************************************************
  ** Description: void breed(Critter***))
- ** PUBLIC::2019.02.10:: LL
+ ** PUBLIC::2019.02.10:: LL-HD
  ** delete doodlebug if it hasn't eaten in 3 turns
  ******************************************************************/
-void Doodlebug::starve()
+void Doodlebug::starve(Critter*** board)
 {
     if (hunger == 3)
     {
         cout << "a doodlebug has starved" << endl;
-        delete this;
+        delete board[x_pos][y_pos];
+        board[x_pos][y_pos] = NULL;
     }
 }
 

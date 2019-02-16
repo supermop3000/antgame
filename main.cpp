@@ -32,7 +32,7 @@ int main()
     int size_x = 20;
     int size_y = 20;
     int numAnts = 100;
-    int numDoodbugs = 5;
+    int numDoodbugs = 20;
     int maxAnts;
     int maxDoodbugs;
 
@@ -189,7 +189,7 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
         /*************************************
         ** STARVE THE DOODLEBUGS
         *************************************/
-//        starveCritters(board, size_x, size_y, 'X', "doodlebug");
+        starveCritters(board, size_x, size_y, 'X', "doodlebug");
 
         cout << "\nStep " << ++stepCounter << " Completed!\n";
         cout << "\n" << "Printing board again" << "\n\n";
@@ -286,7 +286,7 @@ void starveCritters(Critter *** board, int size_x, int size_y, char symbol, std:
             {
                 cout << "A " << type << " has starved at row" << i;
                 cout << " and col " << j << "\n";
-                board[i][j]->starve();
+                board[i][j]->starve(board);
             }
         }
     }
