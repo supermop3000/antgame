@@ -287,7 +287,12 @@ void starveCritters(Critter *** board, int size_x, int size_y, char symbol, std:
             {
                 cout << "A " << type << " has starved at row" << i;
                 cout << " and col " << j << "\n";
-                board[i][j]->starve(board);
+                if(board[i][j]->starve(board))
+		{
+			delete board[i][j];
+			board[i][j] = NULL;
+		}
+                
             }
         }
     }

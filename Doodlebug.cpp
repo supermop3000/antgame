@@ -315,14 +315,17 @@ void Doodlebug::breed(const Critter *** &boardIn)
  ** PUBLIC::2019.02.10:: LL-HD
  ** delete doodlebug if it hasn't eaten in 3 turns
  ******************************************************************/
-void Doodlebug::starve(Critter*** board)
+bool Doodlebug::starve(Critter*** board)
 {
     if (this->hunger == 3)
     {
         cout << "a doodlebug has beed deleted at row " << x_pos << " col " << y_pos << endl;
-        delete board[x_pos][y_pos];
-        board[x_pos][y_pos] = NULL;
+        //delete board[x_pos][y_pos];
+        //board[x_pos][y_pos] = NULL;
+        return true;
     }
+    else
+        return false;
 }
 
 /*
