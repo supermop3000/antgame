@@ -27,14 +27,14 @@ void starveCritters(Critter ***, int, int, char, std::string);
 int main()
 {
     int playGame;
-    int customSettings;
+//    int customSettings;
     int timeSteps;
     int size_x = 20;
     int size_y = 20;
     int numAnts = 100;
-    int numDoodbugs = 20;
-    int maxAnts;
-    int maxDoodbugs;
+    int numDoodbugs = 5;
+//    int maxAnts;
+//    int maxDoodbugs;
 
     Critter ***board;
 
@@ -56,7 +56,7 @@ int main()
 
       timeSteps = validInt();
 
-      // ask the user if they want default settings or custom settings
+/*      // ask the user if they want default settings or custom settings
       querySettings();
       customSettings = validSelection();
       cout << "\n";
@@ -88,6 +88,7 @@ int main()
         cout << "\n";
 
       }
+*/
     }
 
     //quit game

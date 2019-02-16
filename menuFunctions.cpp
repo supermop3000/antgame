@@ -24,7 +24,7 @@ void dispMainMenu()
     cout << "|    doodlebugs. Critters move and   |\n";
     cout << "|   breed. Doodlebugs eat ants and   |\n";
     cout << "|     starve if they do not eat.     |\n";
-    cout << "|  NOTE:EXTRA CREDIT WAS COMPLETED   |\n";
+//    cout << "|  NOTE:EXTRA CREDIT WAS COMPLETED   |\n";
     cout << "======================================\n";
     cout << "- Enter the Number For Your Selection -\n\n";
     cout << "     1. Play Game\n";
