@@ -44,9 +44,13 @@ void Ant::move(Critter *** &boardIn, int size_x, int size_y)
       bool inBounds = false;
       int random = randIntRange(0,3);
       int attempts = 0;
-      switch (random) 
+//      switch (random) 
+      while(attempts < 4)
       {
-         case 0: new_x = this->x_pos - 1;
+         //case 0: 
+         if(random == 0)
+	 {
+          	 new_x = this->x_pos - 1;
                  new_y = this->y_pos;
                  inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
@@ -61,7 +65,11 @@ void Ant::move(Critter *** &boardIn, int size_x, int size_y)
                     attempts++;
                     random = 1;
                  }
-         case 1: new_x = this->x_pos;
+	}
+	if(random == 1)
+	{
+         //case 1: 
+         	 new_x = this->x_pos;
                  new_y = this->y_pos + 1;
                  inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
@@ -75,8 +83,12 @@ void Ant::move(Critter *** &boardIn, int size_x, int size_y)
                  {
                     attempts++;
                     random = 2;
-                 }  
-         case 2: new_x = this->x_pos + 1;
+                 }
+	}
+	if(random == 2)
+	{  
+         //case 2: 
+         	new_x = this->x_pos + 1;
                  new_y = this->y_pos;
                  inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
@@ -91,7 +103,11 @@ void Ant::move(Critter *** &boardIn, int size_x, int size_y)
                     attempts++;
                     random = 3;
                  }
-         case 3: new_x = this->x_pos;
+	}
+	if(random == 3)
+	{
+         //case 3: 
+         	 new_x = this->x_pos;
                  new_y = this->y_pos - 1;
                  inBounds = checkBounds(new_x, new_y, size_x, size_y);
                  if(inBounds && boardIn[new_x][new_y] == NULL)
@@ -106,11 +122,12 @@ void Ant::move(Critter *** &boardIn, int size_x, int size_y)
                     attempts++;
                     random = 0;
                  }
+	}
       }
 
       if(cellFree == true)
       {
-         delete  boardIn[new_x][new_y];
+         //delete  boardIn[new_x][new_y];
          boardIn[new_x][new_y] = boardIn[this->x_pos][this->y_pos];
          boardIn[this->x_pos][this->y_pos] = NULL;
          this->x_pos = new_x;
