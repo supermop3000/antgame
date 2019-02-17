@@ -1,21 +1,14 @@
 /******************************************************************************
 ** Author:      Winter 162 400 Group 4
 ** Date:        02/01/2019
-** Description: This is the header of the Critter Class
-**              This program runs a Predator-Prey Game with "Doodlebug"
-**              predators and "Ant" prey. The program starts with a menu and
-**              has the user set the number steps for the simulation to take.
-**              Once the simulation is complete, the user is queried for the
-**              whether they want to continue with more steps or quit.
-**              This is a declaration of the Critter, Ant, and Doodlebug
+** Description: This is a declaration of the Critter, Ant, and Doodlebug
 **              classes.
 ******************************************************************************/
-
 #ifndef CRITTER_HPP
 #define CRITTER_HPP
-
 #include <iostream>
 using std::cout;
+
 
 class Critter
 {
@@ -43,5 +36,7 @@ class Critter
         bool checkBounds(int, int, int, int);
 	    void resetMoveSuccess();
         int getMoveSuccess();
+        //helper function for breed testing
+        virtual void setAge(int ageIn);
 };
 #endif

@@ -1,16 +1,12 @@
-/********************************************************************
- * Program name: Group Project - Predator Prey Sim
- * Header file for Doodlebug Class
- * Author: Group 4
- * Date: 02/16/2019
- * Description: This is the header file of the Doodlebug class
- *  This program runs a Predator-Prey Game with "Doodlebug"
- *  predators and "Ant" prey. The program starts with a menu and
- *  has the user set the number steps for the simulation to take.
- *  Once the simulation is complete, the user is queried for the
- *  whether they want to continue with more steps or quit.
- * ****************************************************************/
-
+/**************************************************************************************************
+** Program name:Group Project - Predator-Prey Game
+** Author:	Group 4
+** Date:	2019/02/04
+** Description: THIS IS THE HEADER FILE OF THE ANT CLASS
+**              It is a derived class from the Critter class.  In addition to the protected member
+**              variables and public functions it contains a default constructor and destructor,
+**              a void move function, and a boolean starve function.
+**************************************************************************************************/
 #ifndef DOODLEBUG_HPP
 #define DOODLEBUG_HPP
 
@@ -25,11 +21,8 @@ class Doodlebug : public Critter
       Doodlebug(int, int);
       ~Doodlebug(){};
 
-      void move(Critter *** &, int, int);
-      // void breed(Critter *** &);
-      bool starve(Critter***);
-      //helper function for setAge
-      void setAge(int ageIn);
+      virtual void move(Critter *** &, int, int);
+      virtual bool starve(Critter***);
 };
 
 #endif
