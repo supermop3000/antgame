@@ -33,8 +33,8 @@ int main()
     int timeSteps;
     int size_x = 20;
     int size_y = 20;
-    int numAnts = 100;
-    int numDoodbugs = 5;
+    int numAnts = 50;
+    int numDoodbugs = 50;
     //int maxAnts;
     //int maxDoodbugs;
 
@@ -273,8 +273,8 @@ void starveCritters(Critter *** board, int size_x, int size_y, char symbol, std:
         {
             if(board[i][j] != NULL && board[i][j]->getSymbol() == symbol)
             {
-                cout << "A " << type << " has starved at row" << i;
-                cout << " and col " << j << "\n";
+                //cout << "A " << type << " has starved at row" << i;
+                //cout << " and col " << j << "\n";
                 if(board[i][j]->starve(board))
 		{
 			delete board[i][j];

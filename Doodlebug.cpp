@@ -261,7 +261,7 @@ bool Doodlebug::starve(Critter*** board)
 {
     if (this->hunger == 3)
     {
-        cout << "a doodlebug has beed deleted at row " << x_pos << " col " << y_pos << endl;
+        cout << "a doodlebug has starved at row " << x_pos << " col " << y_pos << endl;
         //delete board[x_pos][y_pos];
         //board[x_pos][y_pos] = NULL;
         return true;
