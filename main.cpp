@@ -33,8 +33,8 @@ int main()
     int timeSteps;
     int size_x = 20;
     int size_y = 20;
-    int numAnts = 50;
-    int numDoodbugs = 50;
+    int numAnts = 100;
+    int numDoodbugs = 5;
     //int maxAnts;
     //int maxDoodbugs;
 
