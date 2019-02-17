@@ -1,7 +1,13 @@
 /******************************************************************************
+ ** Program name: Group Project - Predator Prey Simulation
  ** Author:      Winter 162 400 Group 4
- ** Date:        02/04/2019
-** Description: This is a declaration of utility funcitons.
+ ** Date:        02/16/2019
+ ** Description: This is a declaration of utility funcitons.
+ **              This program runs a Predator-Prey Game with "Doodlebug"
+ **              predators and "Ant" prey. The program starts with a menu and
+ **              has the user set the number steps for the simulation to take.
+ **              Once the simulation is complete, the user is queried for the
+ **              whether they want to continue with more steps or quit.
 ******************************************************************************/
 
 #ifndef GROUP4UTILS_HPP
