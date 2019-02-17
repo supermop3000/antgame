@@ -167,8 +167,7 @@ void Critter::breed(Critter *** boardIn, int size_x, int size_y)
          // adjacent open cell exists
          if (cellFree == true)
          {
-             // todo delete for testing
-             cout << "a " << symbol << " critter of age " << age << " is breeding" << endl;
+             //cout << "a " << symbol << " critter of age " << age << " is breeding" << endl;
              
              // randomly roll a number between 0 and (size of open Space vector - 1)
              randomRoll = randIntRange(0, (int)openSpace.size() - 1);

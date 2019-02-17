@@ -55,42 +55,7 @@ int main()
       // ask the user for the number of steps, validate, then set.
       queryNumSteps();
       timeSteps = validInt();
-
-    /*This Area was used for Extra Credit, but commented out.
-
-      // ask the user if they want default settings or custom settings
-      querySettings();
-      customSettings = validSelection();
-      cout << "\n";
-
-      if(customSettings == 1)
-      {
-        cout << "Starting game with default settings" << "\n\n";
-      }
-
-      else if(customSettings == 2)
-      {
-        // ask the user for the number of rows for the board
-        queryCustRows();
-        size_x = validInt();
-
-	    // ask the user for the number of columns for the board
-	    queryCustCols();
-        size_y = validInt();
-
-	    // ask the user for the number of ants for the board
-        maxAnts = (size_x * size_y -1);
-	    queryNumAnts(maxAnts);
-        numAnts = validIntMax(maxAnts);
-
-	    // ask the user for the number of Doodlebugs for the board
-        maxDoodbugs = (size_x * size_y - maxAnts);
-	    queryNumDood(maxDoodbugs);
-        numDoodbugs = validIntMax(maxDoodbugs);
-        cout << "\n";
-
-      }
-    */
+        
     }
 
     //quit game
@@ -119,9 +84,6 @@ int main()
     // counters for the number of each Critter being placed.
     int doodCount = 0;
     int antCount = 0;
-
-    //helper variable setting age to 8 for breed test
-    //int age = 8;
 
     // Place Doodlebugs on the board
     placeDoodles(board, doodCount, numDoodbugs, size_x, size_y);

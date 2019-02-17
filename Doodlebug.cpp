@@ -132,7 +132,7 @@ void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
 
    if(antNear == true)
    {
-      cout << "ant near doodlebug. Doodlebug at row " << x_pos << "column " <<y_pos<< "ant at row " <<new_x<< "col " << new_y << endl;
+      // cout << "ant near doodlebug. Doodlebug at row " << x_pos << "column " <<y_pos<< "ant at row " <<new_x<< "col " << new_y << endl;
       delete boardIn[new_x][new_y]; //delete Ant at the new x,y position
       //set pointer at new x,y position equal to the Doodlebug point that is moving
       boardIn[new_x][new_y] = boardIn[this->x_pos][this->y_pos];      
@@ -261,7 +261,7 @@ bool Doodlebug::starve(Critter*** board)
 {
     if (this->hunger == 3)
     {
-        cout << "a doodlebug has starved at row " << x_pos << " col " << y_pos << endl;
+        //cout << "a doodlebug has starved at row " << x_pos << " col " << y_pos << endl;
         //delete board[x_pos][y_pos];
         //board[x_pos][y_pos] = NULL;
         return true;
