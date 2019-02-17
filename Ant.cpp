@@ -1,12 +1,13 @@
 /**************************************************************************************************
 ** Program name:Group Project - Predator-Prey Game
 ** Author:	Group 4
-**		Herbert Diaz  <diazh@oregonstate.edu>
-**      Janet Anderson <andejane@oregonstate.edu>
-**		INSERT NAME IF YOU HAVE CONTRIBUTED TO THIS FILE
 ** Date:	2019/02/04
 ** Description: THIS IS THE IMPLEMENTATION FILE OF THE ANT CLASS
-**		TODO: DESCRIPTION OF PROGRAM
+**              This program runs a Predator-Prey Game with "Doodlebug"
+**              predators and "Ant" prey. The program starts with a menu and
+**              has the user set the number steps for the simulation to take.
+**              Once the simulation is complete, the user is queried for the
+**              whether they want to continue with more steps or quit.
 **************************************************************************************************/
 // Ant.cpp
 
@@ -14,16 +15,9 @@
 #include "Ant.hpp"
 #include "Group4Utils.hpp"
 
-//!!!COPY AND PASTE THIS BEFORE YOUR FUNCTIONS SO WE CAN KEEP ALL THE INFORMATION TOGETHER!!!!
 /**************************************************************************************************
-** Description: INSERT PROTOTYPE				**PUBLIC::DATE::INITIALS OF AUTHORS**
-**              INSERT DESCRIPTION	 **************************
-**************************************************************************************************/
-
-
-/**************************************************************************************************
-** Description: Ant()							 **PUBLIC::2019.02.04::HD**
-**              This is the default constructor for the Ant Class	 **************************
+** Description: Ant()
+**              This is the default constructor for the Ant Class
 **************************************************************************************************/
 Ant::Ant(int x_pos, int y_pos):Critter(x_pos, y_pos)
 {
@@ -33,9 +27,10 @@ Ant::Ant(int x_pos, int y_pos):Critter(x_pos, y_pos)
 
 
 /**************************************************************************************************
-** Description: void move(Critter***, int, int))		   **PUBLIC::2019.02.04::HD-JA-CC**
-**              TODO:DESCRIBE ARGUMENTS	 			   ********************************
-**		This function also
+** Description: void move(Critter***, int, int))
+**              This function moves an Ant on the board.
+**              The Critter*** argument represents the board the Critters are on.
+**              The two integers represent the dimensions of the board.
 **************************************************************************************************/
 void Ant::move(Critter *** &boardIn, int size_x, int size_y)
 {

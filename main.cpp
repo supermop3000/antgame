@@ -1,8 +1,13 @@
 /******************************************************************************
+ ** Program name:Group Project - Predator-Prey Game
  ** Author:      Winter 162 400 Group 4
  ** Date:        02/01/2019
- ** Description: This program runs a Predator-Prey Game with "Doodlebug"
- **              predators and "Ant" prey.
+ ** Description: This is the main function of the Predator-Prey Sim
+ **              This program runs a Predator-Prey Game with "Doodlebug"
+ **              predators and "Ant" prey. The program starts with a menu and
+ **              has the user set the number steps for the simulation to take.
+ **              Once the simulation is complete, the user is queried for the
+ **              whether they want to continue with more steps or quit.
  ******************************************************************************/
 
 #include "Group4Utils.hpp"
@@ -17,32 +22,28 @@ using std::cout;
 
 // prototypes
 void moveCritters(Critter ***, int, int, char, std::string);
-
 void resetCritterMoveSuccess(Critter ***, int, int);
-
 void breedCritters(Critter ***, int, int, char, std::string);
-
 void starveCritters(Critter ***, int, int, char, std::string);
 
 int main()
 {
     int playGame;
-//    int customSettings;
+    //int customSettings;
     int timeSteps;
     int size_x = 20;
     int size_y = 20;
     int numAnts = 100;
     int numDoodbugs = 5;
-//    int maxAnts;
-//    int maxDoodbugs;
+    //int maxAnts;
+    //int maxDoodbugs;
 
     Critter ***board;
 
-
-/*********************************************************************************
-** This area serves as the menu for the user to configure the ants, doodlebugs,
-** the board, and the number of steps the program should take.
-*********************************************************************************/
+    /*********************************************************************************
+    ** This area serves as the menu for the user to configure the ants, doodlebugs,
+    ** the board, and the number of steps the program should take.
+    *********************************************************************************/
 
     // display the main menu
     dispMainMenu();
@@ -51,12 +52,13 @@ int main()
 
     if(playGame == 1)
     {
-      // ask the user for the number of steps
+      // ask the user for the number of steps, validate, then set.
       queryNumSteps();
-
       timeSteps = validInt();
 
-/*      // ask the user if they want default settings or custom settings
+    /*This Area was used for Extra Credit, but commented out.
+
+      // ask the user if they want default settings or custom settings
       querySettings();
       customSettings = validSelection();
       cout << "\n";
@@ -88,7 +90,7 @@ int main()
         cout << "\n";
 
       }
-*/
+    */
     }
 
     //quit game
@@ -97,28 +99,12 @@ int main()
       return 0;
     }
 
-
-/*********************************************************************************
-** This area holds the creation of the board, along with its accompanying ants
-** and doodlebugs.
-*********************************************************************************/
-/* SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING
-
-    size_x = 10;
-    size_y = 10;
-
-SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
+    /*********************************************************************************
+    ** This area holds the creation of the board, along with its accompanying ants
+    ** and doodlebugs.
+    *********************************************************************************/
 
     //set board spaces to null
-    /*board = new Critter**[size_y];
-    for(int i = 0; i < size_y; i++)
-    {
-      board[i] = new Critter*[size_x];
-      for(int j = 0; j < size_x; j++)
-      {
-        board[i][j] = NULL;
-      }
-    }*/
     board = new Critter**[size_y];
     for(int i = 0; i < size_y; i++)
     {
@@ -147,16 +133,11 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
     printBoard(board, size_y, size_x);
 
 
-/*********************************************************************************
-** This area contains all the simulated movement/feeding, breeding, and starving
-** the Ants and the Doodlebugs will take part in.
-*********************************************************************************/
+    /*********************************************************************************
+    ** This area contains all the simulated movement/feeding, breeding, and starving
+    ** the Ants and the Doodlebugs will take part in.
+    *********************************************************************************/
 
-/* SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING
-
-    timeSteps = 1;
-
-SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
     int stepCounter = 0;
 
     // loop through the simulation until the user decides to end the simulation
@@ -167,8 +148,7 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
         ** MOVE THE DOODLEBUGS
         *************************************/
         
-        moveCritters(board, size_x, size_y, 'X', "doodlebug");
-        
+        moveCritters(board, size_x, size_y, 'X', "doodlebug");        
         resetCritterMoveSuccess(board, size_x, size_y);
         
         /*************************************
@@ -176,13 +156,11 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
          *************************************/
         
         moveCritters(board, size_x, size_y, 'O', "ant");
-        
         resetCritterMoveSuccess(board, size_x, size_y);
 
         /*************************************
         ** BREED THE CRITTERS
         *************************************/
-
     
         breedCritters(board, size_x, size_y, 'X', "doodlebug");
         breedCritters(board, size_x, size_y, 'O', "ant");
@@ -210,9 +188,9 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
 
     }
 
-/*********************************************************************************
-** This area deletes the dynamically allocated Critter array
-*********************************************************************************/
+    /*********************************************************************************
+    ** This area deletes the dynamically allocated Critter array
+    *********************************************************************************/
 
     for(int i = 0; i <  size_y; i++)
     {
@@ -224,11 +202,12 @@ SET UP VARIABLES HERE FOR THE PURPOSE OF TESTING*/
     }
     delete[] board;
     board = NULL;
-    //delete doodle;
-    //doodle = NULL;
     return 0;
 }
 
+/******************************************************************************************
+** Description: This function goes through the board and uses each Critter's move function.
+******************************************************************************************/
 void moveCritters(Critter *** board, int size_x, int size_y, char symbol, std::string type)
 {
     for(int i=0; i<size_y; i++)
@@ -248,6 +227,9 @@ void moveCritters(Critter *** board, int size_x, int size_y, char symbol, std::s
     }
 }
 
+/******************************************************************************************
+** Description: This function goes through the board and resets the move sucess variable.
+******************************************************************************************/
 void resetCritterMoveSuccess(Critter *** board, int size_x, int size_y)
 {
     //reset move success for next round,
@@ -263,6 +245,9 @@ void resetCritterMoveSuccess(Critter *** board, int size_x, int size_y)
     }
 }
 
+/******************************************************************************************
+** Description: This function goes through the board and breeds the Critters if they can.
+******************************************************************************************/
 void breedCritters(Critter *** board, int size_x, int size_y, char symbol, std::string type)
 {
     for(int i=0; i<size_y; i++)
@@ -277,6 +262,9 @@ void breedCritters(Critter *** board, int size_x, int size_y, char symbol, std::
     }
 }
 
+/******************************************************************************************
+** Description: This function goes through the board and starves Doodlebugs if they must.
+******************************************************************************************/
 void starveCritters(Critter *** board, int size_x, int size_y, char symbol, std::string type)
 {
     for(int i=0; i<size_y; i++)
@@ -285,8 +273,8 @@ void starveCritters(Critter *** board, int size_x, int size_y, char symbol, std:
         {
             if(board[i][j] != NULL && board[i][j]->getSymbol() == symbol)
             {
-                cout << "A " << type << " has starved at row" << i;
-                cout << " and col " << j << "\n";
+                //cout << "A " << type << " has starved at row" << i;
+                //cout << " and col " << j << "\n";
                 if(board[i][j]->starve(board))
 		{
 			delete board[i][j];
