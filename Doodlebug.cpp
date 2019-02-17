@@ -3,6 +3,13 @@
 ** Author:  Group 4
 ** Date: 2/15/2019
 ** Description: This is the implementation file of the Doodlebug class
+ * Description: This is the header file of the Doodlebug class
+ *  This program runs a Predator-Prey Game with "Doodlebug"
+ *  predators and "Ant" prey. The program starts with a menu and
+ *  has the user set the number steps for the simulation to take.
+ *  Once the simulation is complete, the user is queried for the
+ *  whether they want to continue with more steps or quit.
+
 **********************************************************************/
 
 #include "Doodlebug.hpp"
@@ -12,6 +19,10 @@
 using std::cout;
 using std::endl;
 
+/*********************************************************************
+** Description: This is the constructor for the Doodlebug class
+*********************************************************************/
+
 Doodlebug::Doodlebug(int x_pos, int y_pos):Critter(x_pos, y_pos)
 {
    this->breedAge = 8;
@@ -19,6 +30,13 @@ Doodlebug::Doodlebug(int x_pos, int y_pos):Critter(x_pos, y_pos)
    this->symbol = 'X';
    this->moveSuccess = 0;
 }
+
+/**********************************************************************
+** Description: This function moves the Doodlebug on the board.
+**  This function takes a Critter*** argument that represents the
+**  board the Doodlebugs are on. The two integer arguments represent
+**  the dimensions of the board.
+**********************************************************************/
 
 void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
 {
@@ -234,82 +252,6 @@ void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
     age++;
 }
 
-/* breed handled in Critter class delete this later
-void Doodlebug::breed(const Critter *** &boardIn)
-{
-   bool cellFree = false;
-   int new_x, new_y;
-   int direction = randIntRange(0,3);
-   int randIterator = 0;
-   //check that adjacent cell is free, i.e. printSymbol() of the object of that cell returns ' '
-   if(this->age == 8)
-   {
-     while(cellFree == false && randIterator != 3)
-     {
-  	   if(direction == 1 && boardIn[this->x_pos + 1][this->y_pos]==NULL)
-  	   {
-  	      new_x = x_pos + 1;
-  	      new_y = y_pos;
-  	      cellFree = true;
-          cout << "New doodlebug born at row " << new_x << "and col " << new_y;
-                break;
-  	   }
-  	   if(direction == 0 && boardIn[this->x_pos - 1][this->y_pos]==NULL)
-  	   {
-  	      new_x = x_pos - 1;
-  	      new_y = y_pos;
-  	      cellFree = true;
-          cout << "New doodlebug born at row " << new_x << "and col " << new_y;
-                break;
-  	   }
-  	   if(direction == 2 && boardIn[this->x_pos][this->y_pos + 1]==NULL)
-  	   {
-  	      new_x = x_pos;
-  	      new_y = y_pos + 1;
-  	      cellFree = true;
-          cout << "New doodlebug born at row " << new_x << "and col " << new_y;
-                break;
-  	   }
-  	   if(direction == 3 && boardIn[this->x_pos][this->y_pos - 1]==NULL)
-  	   {
-  	      new_x = x_pos;
-  	      new_y = y_pos - 1;
-  	      cellFree = true;
-          cout << "New doodlebug born at row " << new_x << "and col " << new_y;
-                break;
-  	   }
-       if(direction != 3 && randIterator <3)
-       {
-         direction = direction + 1;
-         randIterator ++;
-       }
-       else if (direction==3 && randIterator <3)
-       {
-         direction = 0;
-         randIterator++;
-       }
-       else
-       {
-         return;
-       }
-     }
-     if(cellFree == true)
-     {
-       cout << new_x << " " << new_y <<endl;
-       delete boardIn[new_x][new_y];
-       Doodlebug *doodle = new Doodlebug(new_x, new_y);
-       boardIn[new_x][new_y] = doodle;
-     }
-     else
-     {
-       return;
-     }
-
-
-  }
-}
-*/
-
 /******************************************************************
  ** Description: void breed(Critter***))
  ** PUBLIC::2019.02.10:: LL-HD
@@ -327,11 +269,3 @@ bool Doodlebug::starve(Critter*** board)
     else
         return false;
 }
-
-/*
-//helper function for breed test
-void Doodlebug::setAge(int ageIn)
-{
-  this->age = ageIn;
-}
-*/
