@@ -3,6 +3,11 @@
  ** Date:        02/01/2019
  ** Description: This is the implementation of the Critter, Ant, and Doodlebug
  **              classes.
+ **              This program runs a Predator-Prey Game with "Doodlebug"
+ **              predators and "Ant" prey. The program starts with a menu and
+ **              has the user set the number steps for the simulation to take.
+ **              Once the simulation is complete, the user is queried for the
+ **              whether they want to continue with more steps or quit.
  ******************************************************************************/
 
 #include "Ant.hpp"
@@ -39,18 +44,6 @@ void Critter::setY_pos(int y)
 {
     y_pos = y;
 }
-
-/* LL - I don't think we'll need to set these outside of constructor
-void Critter::setRows(int r)
-{
-    rows =r;
-}
-
-void Critter::setColumns(int c)
-{
-    columns = c;
-}
-*/
  
 // Get functions
 char Critter::getSymbol()
@@ -85,63 +78,13 @@ bool Critter::checkBounds(int new_x, int new_y, int size_x, int size_y)
 {
     bool outOfBounce = true;
 
-    if(new_x < 0 || new_x > size_x - 1) //TODO NEED TO MAKE ROWS AND COLUMNS PART OF CRITTER CONSTRUCTOR TO USE ROWS AND COLUMNS CRITERIA FOR BOUNDS FUNCTION
+    if(new_x < 0 || new_x > size_x - 1) 
       outOfBounce = false;
 
     if(new_y < 0 || new_y > size_y - 1)
       outOfBounce = false;
-
- /*   if (direction == 0) //Direction North (move row down 1)
-    {
-        if (this->x_pos -1 < 0)
-        {
-            outOfBounce = false;
-        }
-    }
-    else if (direction == 1) //Direction East (move col up 1)
-    {
-        if (this->y_pos + 1 > 19)
-        {
-            outOfBounce =  false;
-        }
-    }
-    else if (direction == 2) //Direction South (move row up 1)
-    {
-        if (this->x_pos + 1 > 19)
-        {
-            outOfBounce = false;
-        }
-    }
-    else //Direction = 3, Direction West (move column down 1)
-    {
-        if (this->y_pos -1 < 0)
-        {
-            outOfBounce = false;
-        }
-    }*/
     return outOfBounce;
 }
-
-/*
-void Critter::createBoard(Critter *** board, int rowIn, int colIn, int numAntsIn, int numDoodsIn)
-{
-
-}
-
-
-
-void Critter::print_board(Critter *** board, int rows, int cols)
-{
-  for(int i = 0; i < cols; i++)
-  {
-    for(int k = 0; k < rows; k++)
-      {
-        cout << board[i][k]->getSymbol();
-      }
-      cout << endl;
-  }
-}
- */
 
 void Critter::resetMoveSuccess()
 {
@@ -152,11 +95,6 @@ int Critter::getMoveSuccess()
 {
    return this->moveSuccess;
 }
-/*helper function for breed testing
-void Critter::setAge(int ageIn)
-{
-
-}*/
 
 /******************************************************************
  ** Description: void breed(Critter***))
@@ -180,7 +118,7 @@ void Critter::breed(Critter *** boardIn, int size_x, int size_y)
          // holds values that indicate the location of an open space
          std::vector<int> openSpace;
         
-         // Check if x_pos + 1 is free TODO: OR OUT OF BOUNDS
+         // Check if x_pos + 1 is free 
          if (checkBounds((x_pos + 1), y_pos, size_x, size_y) && boardIn[x_pos + 1][y_pos] == NULL)
          {
              // 0 indicates the east space is free
@@ -297,15 +235,6 @@ void Critter::breed(Critter *** boardIn, int size_x, int size_y)
                  }
              }
          }
-        
-        /* todo delete
-         else
-         {
-             cout << "critter attempted to breed but there are no vacant spaces adjacent" << endl;
-         }
-         */
-        
-
     }
 }
 
