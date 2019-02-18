@@ -45,7 +45,6 @@ void Ant::move(Critter *** &boardIn, int size_x, int size_y)
    bool inBounds = false;
    int random = randIntRange(0,3);
 
-   random = 0;
    //Move based on direction that was randomly choosen
    if(random == 0) //Ant move direction NORTH
 	{

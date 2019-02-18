@@ -114,8 +114,7 @@ void Doodlebug::move(Critter*** &boardIn, int size_x, int size_y)
    {
       //Update Doodlebug's hunger since Doodlebug didn't eat
       this->hunger += 1;
-
-      random = 0;
+      
       //Move based on direction that was randomly choosen
       if(random == 0) //Doodlebug move direction NORTH
 	   {

@@ -178,7 +178,7 @@ void Critter::breed(Critter *** boardIn, int size_x, int size_y)
         {           
             // randomly roll a number between 0 and (size of open Space vector - 1)
             int randomRoll = randIntRange(0, (int)openSpace.size() - 1);
-            cout << openSpace[randomRoll] << "\n";
+            
             // INTEGERS INSIDE VECTOR INDICATE THE FOLLOWING
             // 0 = NORTH (x_pos - 1)
             // 1 = EAST  (y_pos + 1)

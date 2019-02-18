@@ -25,8 +25,8 @@ int main()
     int timeSteps;
     int size_x = 20;
     int size_y = 20;
-    //int numAnts = 100;
-    //int numDoodbugs = 5;
+    int numAnts = 100;
+    int numDoodbugs = 5;
     Critter ***board;
 
 
@@ -68,24 +68,17 @@ int main()
     }
 
     //Counters for the number of each Critter being placed.
-    //int doodCount = 0;
-    //int antCount = 0;
+    int doodCount = 0;
+    int antCount = 0;
 
     //Place Doodlebugs on the board
-    //placeDoodles(board, doodCount, numDoodbugs, size_x, size_y);
+    placeDoodles(board, doodCount, numDoodbugs, size_x, size_y);
 
     //Place Ants on the board
-    //placeAnts(board, antCount, numAnts, size_x, size_y);
-
-    board[1][1] = new Doodlebug(1,1);
-    board[0][1] = new Doodlebug(0,1);
-
+    placeAnts(board, antCount, numAnts, size_x, size_y);
 
     //Print starting board 
     printBoard(board, size_x, size_y);
-
-    
-    
 
 /*********************************************************************************
 ** This area contains all the simulated movement/feeding, breeding, and starving
