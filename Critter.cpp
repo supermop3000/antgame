@@ -31,6 +31,16 @@ Critter::Critter(int x_pos, int y_pos)
     this->moveSuccess = 0;
 }
 
+Critter::Critter(int x_pos, int y_pos, int age)
+{
+    this->x_pos = x_pos;
+    this->y_pos = y_pos;
+    this->age = 0;
+    this->breedAge = -1;
+    this->symbol = ' ';
+    this->moveSuccess = 0;
+}
+
 //Set functions
 void Critter::setX_pos(int x)
 {
@@ -168,7 +178,7 @@ void Critter::breed(Critter *** boardIn, int size_x, int size_y)
         {           
             // randomly roll a number between 0 and (size of open Space vector - 1)
             int randomRoll = randIntRange(0, (int)openSpace.size() - 1);
-             
+            cout << openSpace[randomRoll] << "\n";
             // INTEGERS INSIDE VECTOR INDICATE THE FOLLOWING
             // 0 = NORTH (x_pos - 1)
             // 1 = EAST  (y_pos + 1)

@@ -22,6 +22,7 @@ class Critter
 
     public:
         Critter(int, int);
+        Critter(int, int, int);
         virtual ~Critter(){};
         virtual void move(Critter ***&, int, int) = 0;
         virtual void breed(Critter ***, int, int);

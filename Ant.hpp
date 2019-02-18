@@ -17,6 +17,7 @@ class Ant : public Critter
 {
 	public:
 		Ant(int x_pos, int y_pos);
+		Ant(int x_pos, int y_pos, int age);
 		~Ant(){};
 		virtual void move(Critter *** &, int, int);
 };

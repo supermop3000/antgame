@@ -1,8 +1,6 @@
 /**************************************************************************************************
 ** Program Name:Group Project - Predator-Prey Game
 ** Author:	Group 4
-**		      Herbert Diaz  <diazh@oregonstate.edu>
-**          Janet Anderson <andejane@oregonstate.edu>
 ** Date:	2019/02/04
 ** Description: THIS IS THE IMPLEMENTATION FILE OF THE ANT CLASS
 **		          It contains the default constructor creating an Ant object and the move function
@@ -15,7 +13,7 @@
 #include "Group4Utils.hpp"
 
 /**************************************************************************************************
-** Description: Ant(int,int)							 **PUBLIC::2019.02.04::HD-JA**
+** Description: Ant(int,int)							 
 **              This is the default constructor for the Ant Class that sets the breeding age of the 
 **              Ant to 3, the board symbol representing the Ant to 'O', and the moveSuccess to 0.
 **************************************************************************************************/
@@ -26,8 +24,15 @@ Ant::Ant(int x_pos, int y_pos):Critter(x_pos, y_pos)
    this->moveSuccess = 0;
 }
 
+Ant::Ant(int x, int y, int antAge):Critter(x_pos,y_pos,age)
+{
+   this->breedAge = 3;
+   this->symbol = 'O';
+   this->moveSuccess = 0;
+}
+
 /**************************************************************************************************
-** Description: void move(Critter*** &, int, int))		   **PUBLIC::2019.02.04::HD-JA-CC**
+** Description: void move(Critter*** &, int, int))		   
 **		          The move function for the Ant class will randomly call a number between 0-3, which
 **              represents the cardinal directions (NORTH, EAST, SOUTH, and WEST).  Based on the
 **              random direction, the ant will attempt to move to that location as long as the 
@@ -40,6 +45,7 @@ void Ant::move(Critter *** &boardIn, int size_x, int size_y)
    bool inBounds = false;
    int random = randIntRange(0,3);
 
+   random = 0;
    //Move based on direction that was randomly choosen
    if(random == 0) //Ant move direction NORTH
 	{
